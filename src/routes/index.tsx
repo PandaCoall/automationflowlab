@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { ToolOpen } from "@/components/site/tool-open";
 import { StatusPill } from "@/components/site/status-pill";
 import { plans, problems, services, site, tools } from "@/lib/site-content";
 
@@ -38,7 +39,7 @@ function Home() {
           <div className="mt-5 border-t border-line pt-5">
             <h3 className="font-sans text-base font-semibold">Use a tool we are building</h3>
             <p className="mt-2 text-sm text-muted">
-              The catalogue is IT work: automations, mail, analytics, Excel, documents, and SharePoint. None has a signed-in workflow yet, so each is marked Coming soon.
+              The catalogue is IT work you can try, including a free Microsoft licence comparison. Cert Batch and that comparison are live. The others are browser demos.
             </p>
             <Link to="/tools" className="mt-3 inline-flex h-11 items-center text-sm font-semibold text-primary">
               Open the catalogue
@@ -86,13 +87,11 @@ function Home() {
               <StatusPill status={tool.status} />
               <h3 className="mt-4 font-display text-2xl">{tool.name}</h3>
               <p className="mt-2 flex-1 text-sm text-muted">{tool.summary}</p>
-              <Link
-                to="/tools/$slug"
-                params={{ slug: tool.slug }}
+              <ToolOpen
+                slug={tool.slug}
+                label={tool.status === "available" ? `Open ${tool.name}` : `Try ${tool.name}`}
                 className="mt-5 inline-flex h-11 items-center text-sm font-semibold text-primary"
-              >
-                View {tool.name}
-              </Link>
+              />
             </li>
           ))}
         </ul>

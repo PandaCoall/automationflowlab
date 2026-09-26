@@ -1,5 +1,5 @@
-import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Link, useRouter, useRouterState } from "@tanstack/react-router";
+import { ArrowLeft, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { UserButton } from "@/lib/auth/gates";
 import { nav, site } from "@/lib/site-content";
@@ -12,7 +12,16 @@ function isActive(pathname: string, to: string) {
 
 export function SiteFrame({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+
+  function goBack() {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.history.back();
+      return;
+    }
+    router.navigate({ to: pathname.startsWith("/tools/") ? "/tools" : "/" });
+  }
 
   useEffect(() => {
     setOpen(false);
@@ -27,11 +36,23 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <header className="sticky top-0 z-40 border-b border-line bg-paper">
-        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5">
-          <Link to="/" className="flex items-center gap-2 font-display text-lg text-ink">
+        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-5">
+          <div className="flex min-w-0 items-center gap-2">
+            {pathname !== "/" ? (
+              <button
+                type="button"
+                onClick={goBack}
+                className="grid size-11 shrink-0 place-items-center rounded-sm border border-line bg-surface text-ink"
+              >
+                <ArrowLeft aria-hidden="true" />
+                <span className="sr-only">Back</span>
+              </button>
+            ) : null}
+            <Link to="/" className="flex min-w-0 items-center gap-2 font-display text-lg text-ink">
             <Mark className="size-8 text-primary" />
-            <span>{site.name}</span>
+            <span className="truncate">{site.name}</span>
           </Link>
+          </div>
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
             {nav.map((item) => (
               <Link
@@ -125,6 +146,9 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
             </ul>
           </div>
         </div>
+        <p className="mx-auto w-full max-w-6xl px-5 pb-8 text-xs text-muted">
+          Information on this site is for general use at your own discretion. Automation Flow Lab is not liable for any loss, cost, or decision made from it. Check the original source before you buy or rely on a figure.
+        </p>
       </footer>
     </div>
   );

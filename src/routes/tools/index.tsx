@@ -1,4 +1,5 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
+import { ToolOpen } from "@/components/site/tool-open";
 import { PageIntro } from "@/components/site/frame";
 import { StatusPill } from "@/components/site/status-pill";
 import { tools } from "@/lib/site-content";
@@ -10,7 +11,7 @@ export const Route = createFileRoute("/tools/")({
       {
         name: "description",
         content:
-          "IT tools for automations, analytics, Excel, forms, documents, mail, SharePoint, and technical change requests. Each stays Coming soon until its signed-in workflow works.",
+          "IT tools you can try in the browser. Cert Batch is the live product. The others are demos: your inputs stay in this browser and are not written to your live systems.",
       },
     ],
   }),
@@ -22,8 +23,8 @@ function ToolsPage() {
     <div className="pb-20">
       <PageIntro
         eyebrow="Tools"
-        title="IT tools. None of them is a demo."
-        lede="These are the jobs we already get called for: something stopped running, two systems are not talking, or the same technical step is still done by hand. A product is marked Available only after its signed-in workflow works. Until then it is Coming soon."
+        title="IT tools you can try."
+        lede="Cert Batch and the Microsoft licence comparison are live. The rest are demos. A demo does not sign into Microsoft, Zoho, or your mailbox."
       />
       <ul className="mx-auto grid w-full max-w-6xl gap-4 px-5 md:grid-cols-2">
         {tools.map((tool) => (
@@ -33,13 +34,11 @@ function ToolsPage() {
             <p className="mt-3 text-sm font-semibold">Who it is for</p>
             <p className="mt-1 text-sm text-muted">{tool.audience}</p>
             <p className="mt-4 flex-1 text-sm text-muted">{tool.summary}</p>
-            <Link
-              to="/tools/$slug"
-              params={{ slug: tool.slug }}
+            <ToolOpen
+              slug={tool.slug}
+              label={tool.status === "available" ? `Open ${tool.name}` : "Try the demo"}
               className="mt-5 inline-flex h-11 items-center font-semibold text-primary"
-            >
-              Read about this tool
-            </Link>
+            />
           </li>
         ))}
       </ul>

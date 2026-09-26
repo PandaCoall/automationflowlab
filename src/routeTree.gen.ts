@@ -18,9 +18,13 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SupportPlansRouteImport } from './routes/support-plans'
+import { Route as ApiLicenseCatalogRouteImport } from './routes/api/license-catalog'
 import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as ToolsSlugRouteImport } from './routes/tools/$slug'
+import { Route as ToolsCertBatchRouteImport } from './routes/tools/cert-batch'
+import { Route as ToolsLicenseCompareRouteImport } from './routes/tools/license-compare'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as ToolsPlaySlugRouteImport } from './routes/tools/play.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -67,6 +71,11 @@ const SupportPlansRoute = SupportPlansRouteImport.update({
   path: '/support-plans',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiLicenseCatalogRoute = ApiLicenseCatalogRouteImport.update({
+  id: '/api/license-catalog',
+  path: '/api/license-catalog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsIndexRoute = ToolsIndexRouteImport.update({
   id: '/tools/',
   path: '/tools/',
@@ -77,9 +86,24 @@ const ToolsSlugRoute = ToolsSlugRouteImport.update({
   path: '/tools/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsCertBatchRoute = ToolsCertBatchRouteImport.update({
+  id: '/tools/cert-batch',
+  path: '/tools/cert-batch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsLicenseCompareRoute = ToolsLicenseCompareRouteImport.update({
+  id: '/tools/license-compare',
+  path: '/tools/license-compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsPlaySlugRoute = ToolsPlaySlugRouteImport.update({
+  id: '/tools/play/$slug',
+  path: '/tools/play/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -93,9 +117,13 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
+  '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/cert-batch': typeof ToolsCertBatchRoute
+  '/tools/license-compare': typeof ToolsLicenseCompareRoute
   '/tools/': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/tools/play/$slug': typeof ToolsPlaySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -107,9 +135,13 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
+  '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/cert-batch': typeof ToolsCertBatchRoute
+  '/tools/license-compare': typeof ToolsLicenseCompareRoute
   '/tools': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/tools/play/$slug': typeof ToolsPlaySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -122,9 +154,13 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
+  '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/tools/cert-batch': typeof ToolsCertBatchRoute
+  '/tools/license-compare': typeof ToolsLicenseCompareRoute
   '/tools/': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/tools/play/$slug': typeof ToolsPlaySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -138,9 +174,13 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/services'
     | '/support-plans'
+    | '/api/license-catalog'
     | '/tools/$slug'
+    | '/tools/cert-batch'
+    | '/tools/license-compare'
     | '/tools/'
     | '/api/auth/$'
+    | '/tools/play/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -152,9 +192,13 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/services'
     | '/support-plans'
+    | '/api/license-catalog'
     | '/tools/$slug'
+    | '/tools/cert-batch'
+    | '/tools/license-compare'
     | '/tools'
     | '/api/auth/$'
+    | '/tools/play/$slug'
   id:
     | '__root__'
     | '/'
@@ -166,9 +210,13 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/services'
     | '/support-plans'
+    | '/api/license-catalog'
     | '/tools/$slug'
+    | '/tools/cert-batch'
+    | '/tools/license-compare'
     | '/tools/'
     | '/api/auth/$'
+    | '/tools/play/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -181,9 +229,13 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ServicesRoute: typeof ServicesRoute
   SupportPlansRoute: typeof SupportPlansRoute
+  ApiLicenseCatalogRoute: typeof ApiLicenseCatalogRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
+  ToolsCertBatchRoute: typeof ToolsCertBatchRoute
+  ToolsLicenseCompareRoute: typeof ToolsLicenseCompareRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
+  ToolsPlaySlugRoute: typeof ToolsPlaySlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -251,6 +303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportPlansRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/license-catalog': {
+      id: '/api/license-catalog'
+      path: '/api/license-catalog'
+      fullPath: '/api/license-catalog'
+      preLoaderRoute: typeof ApiLicenseCatalogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/': {
       id: '/tools/'
       path: '/tools'
@@ -265,11 +324,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/cert-batch': {
+      id: '/tools/cert-batch'
+      path: '/tools/cert-batch'
+      fullPath: '/tools/cert-batch'
+      preLoaderRoute: typeof ToolsCertBatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/license-compare': {
+      id: '/tools/license-compare'
+      path: '/tools/license-compare'
+      fullPath: '/tools/license-compare'
+      preLoaderRoute: typeof ToolsLicenseCompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
       fullPath: '/api/auth/$'
       preLoaderRoute: typeof ApiAuthSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/play/$slug': {
+      id: '/tools/play/$slug'
+      path: '/tools/play/$slug'
+      fullPath: '/tools/play/$slug'
+      preLoaderRoute: typeof ToolsPlaySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -285,9 +365,13 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ServicesRoute: ServicesRoute,
   SupportPlansRoute: SupportPlansRoute,
+  ApiLicenseCatalogRoute: ApiLicenseCatalogRoute,
   ToolsSlugRoute: ToolsSlugRoute,
+  ToolsCertBatchRoute: ToolsCertBatchRoute,
+  ToolsLicenseCompareRoute: ToolsLicenseCompareRoute,
   ToolsIndexRoute: ToolsIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
+  ToolsPlaySlugRoute: ToolsPlaySlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

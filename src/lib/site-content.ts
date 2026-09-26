@@ -18,7 +18,7 @@ export const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-export type ToolStatus = "coming-soon" | "available";
+export type ToolStatus = "coming-soon" | "available" | "demo";
 
 export type Tool = {
   slug: string;
@@ -31,14 +31,28 @@ export type Tool = {
 };
 
 /**
- * A product is "available" only when its signed-in workflow actually works.
- * Until then it stays "coming-soon". Do not add a fake interactive demo.
+ * "available" means the signed-in product works (Cert Batch).
+ * "demo" means you can try it in the browser with your own inputs. It does not write to the customer's live systems.
  */
 export const tools: Tool[] = [
   {
+    slug: "cert-batch",
+    name: "Cert Batch",
+    status: "available",
+    summary: "Turn a learner spreadsheet into one certificate PDF per person, then run the send queue without stopping the whole batch.",
+    audience: "Training teams who still build hundreds of certificates by hand or through a flow that dies halfway.",
+    outcome: "Upload the list, check the certificate with the logo, download the PDFs, and retry only the rows that did not send.",
+    features: [
+      "Excel or CSV in, with column mapping",
+      "Live PDF preview, logo on the left or right, three layouts and three colours",
+      "One PDF per learner in a ZIP, plus a result sheet",
+      "A row that fails or is throttled does not stop the rest",
+    ],
+  },
+  {
     slug: "automation-watch",
     name: "Automation Watch",
-    status: "coming-soon",
+    status: "demo",
     summary: "A short list of named workflows with the last successful run and the last failure.",
     audience:
       "The person who owns overnight flows, scheduled jobs, and connectors that fail quietly until a client notices.",
@@ -52,24 +66,23 @@ export const tools: Tool[] = [
     ],
   },
   {
-    slug: "analytics-health-check",
-    name: "Analytics Health Check",
-    status: "coming-soon",
-    summary: "A first pass on whether the site tag is present, firing, and on the right domain.",
-    audience: "Anyone whose traffic suddenly reads as zero, or who cannot tell if measurement is on at all.",
-    outcome:
-      "You know whether the numbers are real before anyone spends an hour arguing about a dashboard.",
+    slug: "license-compare",
+    name: "Microsoft licence comparison",
+    status: "available",
+    summary: "Put two Microsoft 365 suites side by side using the public commercial price list.",
+    audience: "Anyone choosing a Microsoft suite on budget, what it has to cover, and where it is bought.",
+    outcome: "A plain answer on which of the two fits better, and why, from the prices Microsoft publishes.",
     features: [
-      "A check that the analytics tag is on the pages you name",
-      "A note on whether a hit is actually being sent",
-      "A flag when the tag is on the wrong domain or a staging host",
-      "A plain-language result. A full setup or repair is booked as analytics work, not inside this page",
+      "Live read of Microsoft’s public commercial price list",
+      "Two products, a user count, and an optional per-user budget",
+      "Suites with Teams, or the EEA and Switzerland suites without Teams",
+      "Free. US dollars, before tax, and not a quote or a partner discount",
     ],
   },
   {
     slug: "excel-health-check",
     name: "Excel Health Check",
-    status: "coming-soon",
+    status: "demo",
     summary:
       "A written review of a workbook: what is wrong, what is fragile, and what to fix first.",
     audience:
@@ -86,7 +99,7 @@ export const tools: Tool[] = [
   {
     slug: "form-to-inbox-check",
     name: "Form-to-Inbox Check",
-    status: "coming-soon",
+    status: "demo",
     summary: "Confirm that a website form still lands in the mailbox or system it is supposed to hit.",
     audience: "The person who finds out a contact form died only when a customer says they never heard back.",
     outcome: "You know the form posts, and where the message goes, before the next enquiry disappears.",
@@ -98,24 +111,9 @@ export const tools: Tool[] = [
     ],
   },
   {
-    slug: "doc-extract",
-    name: "Doc Extract",
-    status: "coming-soon",
-    summary: "Upload a PDF or photo of a document and get the fields a person would otherwise retype.",
-    audience:
-      "Anyone pasting supplier invoices, signed forms, or quote photos into a sheet or into Zoho by hand.",
-    outcome: "Name, date, amount, and reference come out as fields you can check, then copy onward.",
-    features: [
-      "Upload a PDF or image",
-      "Extract the fields you asked for, not a summary essay",
-      "A human check before anything is treated as correct",
-      "A change you can copy into Excel or a configured Zoho module",
-    ],
-  },
-  {
     slug: "mail-flow-check",
     name: "Mail Flow Check",
-    status: "coming-soon",
+    status: "demo",
     summary: "A short read of whether domain mail is set up to leave and to be trusted.",
     audience: "Anyone whose mail lands in spam, or whose domain records were never checked after a host change.",
     outcome: "You see SPF, DKIM, and DMARC as present or missing, plus whether a test message left.",
@@ -129,7 +127,7 @@ export const tools: Tool[] = [
   {
     slug: "sharepoint-library-builder",
     name: "SharePoint Library Builder",
-    status: "coming-soon",
+    status: "demo",
     summary: "Name the libraries, columns, and who should see them. Get a build list, not another drive.",
     audience:
       "Teams whose current files are in personal OneDrive and email, and who need a library structure before anyone migrates.",
@@ -144,7 +142,7 @@ export const tools: Tool[] = [
   {
     slug: "change-request",
     name: "Change Request",
-    status: "coming-soon",
+    status: "demo",
     summary: "One place for a technical ask: access, a publish, or a change — and the decision that followed.",
     audience:
       "The person who gets “I can’t open the library” or “please publish this” by email, then cannot find what was approved.",

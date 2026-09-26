@@ -8,6 +8,13 @@ export function StatusPill({ status }: { status: ToolStatus }) {
       </span>
     );
   }
+  if (status === "demo") {
+    return (
+      <span className="inline-flex h-7 items-center rounded-sm border border-primary bg-surface px-2 font-sans text-sm font-semibold text-primary">
+        Demo
+      </span>
+    );
+  }
   return (
     <span className="inline-flex h-7 items-center rounded-sm border border-line bg-surface px-2 font-sans text-sm font-semibold text-ink">
       Coming soon

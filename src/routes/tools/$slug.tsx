@@ -1,6 +1,7 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { StatusPill } from "@/components/site/status-pill";
+import { ToolOpen } from "@/components/site/tool-open";
 import { getTool } from "@/lib/site-content";
 
 export const Route = createFileRoute("/tools/$slug")({
@@ -46,8 +47,17 @@ function ToolPage() {
         <p className="mt-8 rounded-lg border border-line bg-surface p-4 text-sm text-muted">
           {tool.status === "available"
             ? "The signed-in workflow for this tool is live."
-            : "This page is not a demo. There is no sample login, no file upload, and no pretend result. The signed-in workflow is not built yet."}
+            : tool.status === "demo"
+              ? "You can try this in the browser with your own inputs. It does not write to your live systems."
+              : "This page is not a demo. The signed-in workflow is not built yet."}
         </p>
+        {tool.status === "demo" || tool.status === "available" ? (
+          <ToolOpen
+            slug={tool.slug}
+            label={tool.status === "available" ? `Open ${tool.name}` : "Try the demo"}
+            className="mt-4 inline-flex h-11 items-center font-semibold text-primary"
+          />
+        ) : null}
       </article>
       <div className="md:col-span-5">
         <EnquiryForm
