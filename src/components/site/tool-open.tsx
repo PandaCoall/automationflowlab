@@ -8,6 +8,13 @@ export function ToolOpen({ slug, label, className }: { slug: string; label: stri
       </Link>
     );
   }
+  if (slug === "growth-check") {
+    return (
+      <Link to="/tools/growth-check" className={className}>
+        {label}
+      </Link>
+    );
+  }
   if (slug === "license-compare") {
     return (
       <Link to="/tools/license-compare" className={className}>

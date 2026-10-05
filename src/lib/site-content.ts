@@ -66,6 +66,20 @@ export const tools: Tool[] = [
     ],
   },
   {
+    slug: "growth-check",
+    name: "Website Growth Check",
+    status: "available",
+    summary: "Enter a website and get up to five findings on offer, trust, enquiry path, search structure, and technical quality.",
+    audience: "Anyone who wants a first read of whether a public site is helping or blocking enquiries.",
+    outcome: "A short status, not a full audit. Deeper analysis is booked separately.",
+    features: [
+      "A public website address, and an optional line on what the business does",
+      "Up to five findings: Working, Needs work, or Critical",
+      "Commercial impact first — not a list of minor faults",
+      "A full audit, with the fix plan, is a paid service",
+    ],
+  },
+  {
     slug: "license-compare",
     name: "Microsoft licence comparison",
     status: "available",
