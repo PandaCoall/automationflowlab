@@ -53,16 +53,14 @@ export const tools: Tool[] = [
     slug: "automation-watch",
     name: "Automation Watch",
     status: "demo",
-    summary: "A short list of named workflows with the last successful run and the last failure.",
-    audience:
-      "The person who owns overnight flows, scheduled jobs, and connectors that fail quietly until a client notices.",
-    outcome:
-      "You see which automation is healthy and which one stopped, without opening every tool to check.",
+    summary: "Sample flows, each with the error the run returned and a plain explanation of why it stopped.",
+    audience: "Someone new to flows who can see an error code and still not tell what to look at.",
+    outcome: "You can read a failed step in ordinary language. This page does not connect to a live flow.",
     features: [
-      "A named list of the workflows you care about",
-      "Last successful run and last failure on each one",
-      "A simple healthy or not status — not a monitoring suite",
-      "A place to note what you checked after a fail",
+      "A set of sample flow links, already attached",
+      "The error as the platform wrote it",
+      "What that error means, and why it usually happens",
+      "You cannot paste your own link. A live read of your flows is separate work",
     ],
   },
   {
@@ -125,32 +123,32 @@ export const tools: Tool[] = [
     ],
   },
   {
-    slug: "mail-flow-check",
-    name: "Mail Flow Check",
-    status: "demo",
-    summary: "A short read of whether domain mail is set up to leave and to be trusted.",
-    audience: "Anyone whose mail lands in spam, or whose domain records were never checked after a host change.",
-    outcome: "You see SPF, DKIM, and DMARC as present or missing, plus whether a test message left.",
+    slug: "zoho-fit",
+    name: "Zoho setup check",
+    status: "available",
+    summary: "Tick what you need. See the Zoho apps that cover it, and which extras are wasted effort.",
+    audience: "Anyone about to buy Zoho, or already paying for apps they do not open.",
+    outcome: "The smallest set for the work you named, and the few setup steps that mean it is actually done.",
     features: [
-      "A check of the mail records on the domain you name",
-      "A plain note on what is missing",
-      "A record of a test send, when one has been run",
-      "Fixes to DNS or Zoho mail are booked as configuration work, not promised from this page",
+      "You tick the work, not a product catalogue",
+      "A short list of what to get, what to keep, and what to skip",
+      "A note when Zoho One, a second invoicing app, or a side tool is extra",
+      "It does not sign into Zoho and it is not a quote",
     ],
   },
   {
     slug: "sharepoint-library-builder",
-    name: "SharePoint Library Builder",
+    name: "SharePoint library",
     status: "demo",
-    summary: "Name the libraries, columns, and who should see them. Get a build list, not another drive.",
+    summary: "Move a file between Incoming, Current, and Filed, and watch the status follow it.",
     audience:
-      "Teams whose current files are in personal OneDrive and email, and who need a library structure before anyone migrates.",
-    outcome: "A written library plan you can implement — or hand to us to build in SharePoint.",
+      "Teams whose files sit in personal drives and email, and who want to see a library before anyone builds one.",
+    outcome: "You can see where a file lives, and which copy is the current one, without opening SharePoint.",
     features: [
-      "Libraries named for the work, not for a department chart",
-      "The columns a file needs so the current version is obvious",
-      "Who should see each library, written down before permissions are applied",
-      "This page does not create a SharePoint site. Building it is the SharePoint service",
+      "Drag a file into Incoming, Current, or Filed",
+      "The status changes with the move, so the current copy is obvious",
+      "Nothing is uploaded and no SharePoint site is created",
+      "Building the real library is the SharePoint service",
     ],
   },
   {
@@ -169,6 +167,8 @@ export const tools: Tool[] = [
     ],
   },
 ];
+
+tools.sort((a, b) => Number(a.status !== "available") - Number(b.status !== "available"));
 
 export function getTool(slug: string): Tool | undefined {
   return tools.find((tool) => tool.slug === slug);

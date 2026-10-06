@@ -25,6 +25,7 @@ import { Route as ToolsSlugRouteImport } from './routes/tools/$slug'
 import { Route as ToolsCertBatchRouteImport } from './routes/tools/cert-batch'
 import { Route as ToolsGrowthCheckRouteImport } from './routes/tools/growth-check'
 import { Route as ToolsLicenseCompareRouteImport } from './routes/tools/license-compare'
+import { Route as ToolsZohoFitRouteImport } from './routes/tools/zoho-fit'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as ToolsPlaySlugRouteImport } from './routes/tools/play.$slug'
 
@@ -108,6 +109,11 @@ const ToolsLicenseCompareRoute = ToolsLicenseCompareRouteImport.update({
   path: '/tools/license-compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsZohoFitRoute = ToolsZohoFitRouteImport.update({
+  id: '/tools/zoho-fit',
+  path: '/tools/zoho-fit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/tools/cert-batch': typeof ToolsCertBatchRoute
   '/tools/growth-check': typeof ToolsGrowthCheckRoute
   '/tools/license-compare': typeof ToolsLicenseCompareRoute
+  '/tools/zoho-fit': typeof ToolsZohoFitRoute
   '/tools/': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/tools/play/$slug': typeof ToolsPlaySlugRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/tools/cert-batch': typeof ToolsCertBatchRoute
   '/tools/growth-check': typeof ToolsGrowthCheckRoute
   '/tools/license-compare': typeof ToolsLicenseCompareRoute
+  '/tools/zoho-fit': typeof ToolsZohoFitRoute
   '/tools': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/tools/play/$slug': typeof ToolsPlaySlugRoute
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/tools/cert-batch': typeof ToolsCertBatchRoute
   '/tools/growth-check': typeof ToolsGrowthCheckRoute
   '/tools/license-compare': typeof ToolsLicenseCompareRoute
+  '/tools/zoho-fit': typeof ToolsZohoFitRoute
   '/tools/': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/tools/play/$slug': typeof ToolsPlaySlugRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/tools/cert-batch'
     | '/tools/growth-check'
     | '/tools/license-compare'
+    | '/tools/zoho-fit'
     | '/tools/'
     | '/api/auth/$'
     | '/tools/play/$slug'
@@ -218,6 +228,7 @@ export interface FileRouteTypes {
     | '/tools/cert-batch'
     | '/tools/growth-check'
     | '/tools/license-compare'
+    | '/tools/zoho-fit'
     | '/tools'
     | '/api/auth/$'
     | '/tools/play/$slug'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/tools/cert-batch'
     | '/tools/growth-check'
     | '/tools/license-compare'
+    | '/tools/zoho-fit'
     | '/tools/'
     | '/api/auth/$'
     | '/tools/play/$slug'
@@ -259,6 +271,7 @@ export interface RootRouteChildren {
   ToolsCertBatchRoute: typeof ToolsCertBatchRoute
   ToolsGrowthCheckRoute: typeof ToolsGrowthCheckRoute
   ToolsLicenseCompareRoute: typeof ToolsLicenseCompareRoute
+  ToolsZohoFitRoute: typeof ToolsZohoFitRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ToolsPlaySlugRoute: typeof ToolsPlaySlugRoute
@@ -378,6 +391,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsLicenseCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/zoho-fit': {
+      id: '/tools/zoho-fit'
+      path: '/tools/zoho-fit'
+      fullPath: '/tools/zoho-fit'
+      preLoaderRoute: typeof ToolsZohoFitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
@@ -411,6 +431,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsCertBatchRoute: ToolsCertBatchRoute,
   ToolsGrowthCheckRoute: ToolsGrowthCheckRoute,
   ToolsLicenseCompareRoute: ToolsLicenseCompareRoute,
+  ToolsZohoFitRoute: ToolsZohoFitRoute,
   ToolsIndexRoute: ToolsIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ToolsPlaySlugRoute: ToolsPlaySlugRoute,

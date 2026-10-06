@@ -15,6 +15,13 @@ export function ToolOpen({ slug, label, className }: { slug: string; label: stri
       </Link>
     );
   }
+  if (slug === "zoho-fit") {
+    return (
+      <Link to="/tools/zoho-fit" className={className}>
+        {label}
+      </Link>
+    );
+  }
   if (slug === "license-compare") {
     return (
       <Link to="/tools/license-compare" className={className}>

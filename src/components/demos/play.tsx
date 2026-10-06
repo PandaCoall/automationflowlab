@@ -19,48 +19,89 @@ function Panel({ title, children }: { title: string; children: React.ReactNode }
   );
 }
 
+const sampleFlows = [
+  {
+    name: "Nightly Zoho contact update",
+    link: "https://flow.example/zoho/nightly-contacts",
+    raw: "401 Unauthorized. The OAuth token has expired.",
+    means: "The flow is signed out of Zoho. Every step after the sign-in was refused.",
+    why: "Connections expire. A password change or a removed app login does the same thing.",
+  },
+  {
+    name: "Row-by-row invoice create",
+    link: "https://flow.example/books/invoice-loop",
+    raw: "429 Too Many Requests. Retry-After: 120.",
+    means: "The flow is fine. Zoho told it to slow down. It sent more calls than that minute allows.",
+    why: "A loop that creates one invoice per row, with no pause, hits the limit.",
+  },
+  {
+    name: "Form to new CRM lead",
+    link: "https://flow.example/crm/form-to-lead",
+    raw: "Expression evaluation failed. Property 'Email' doesn't exist on the incoming item.",
+    means: "This step asked for an email, and this submission did not have one. The flow cannot invent the field.",
+    why: "The form left email optional, or an earlier step renamed the field.",
+  },
+  {
+    name: "Update the deal owner",
+    link: "https://flow.example/crm/deal-owner",
+    raw: "404 Resource not found. Deal id 44102 does not exist.",
+    means: "The flow tried to change a deal that is no longer there.",
+    why: "The deal was deleted after the flow started and before this step ran.",
+  },
+  {
+    name: "Copy the weekly sheet",
+    link: "https://flow.example/excel/weekly-copy",
+    raw: "The operation timed out after 120 seconds.",
+    means: "The other side did not answer in time, so the flow stopped waiting. It did not finish the copy.",
+    why: "The file is large, or the service was slow. The flow treats silence as a failure.",
+  },
+  {
+    name: "Notify only when status is Won",
+    link: "https://flow.example/crm/won-alert",
+    raw: "Action skipped. Condition result: false.",
+    means: "This is not a crash. The check said no, so the steps under it did not run.",
+    why: "The status on the record is not exactly Won. A different spelling, or a blank status, takes the no path every time.",
+  },
+  {
+    name: "Create the customer in Books",
+    link: "https://flow.example/books/new-customer",
+    raw: "409 Conflict. A record with this email already exists.",
+    means: "The flow tried to create a customer who is already in Books.",
+    why: "The flow always creates. It does not look up the email and update the existing customer.",
+  },
+];
+
 export function AutomationWatchDemo() {
-  const [items, setItems] = useState([
-    { name: "Nightly Zoho sync", ok: true, at: "Today 02:14", note: "" },
-    { name: "Form to mailbox", ok: false, at: "Yesterday 18:02", note: "Mailbox rejected the connector." },
-  ]);
-  const [name, setName] = useState("");
+  const [open, setOpen] = useState(0);
+  const flow = sampleFlows[open];
   return (
     <div className="grid gap-4">
-      <DemoNote>Add the workflows you actually run. Mark a run as healthy or failed. Nothing here calls your automation platform.</DemoNote>
-      <Panel title="Workflows">
-        <form
-          className="flex flex-col gap-2 sm:flex-row"
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (!name.trim()) return;
-            setItems((list) => [{ name: name.trim(), ok: true, at: "Not run yet", note: "" }, ...list]);
-            setName("");
-          }}
-        >
-          <input className={field} value={name} onChange={(e) => setName(e.target.value)} placeholder="Workflow name" aria-label="Workflow name" />
-          <button className={btn} type="submit">Add</button>
-        </form>
-        <ul className="mt-4 divide-y divide-line border-y border-line">
-          {items.map((item, i) => (
-            <li key={item.name + i} className="grid gap-2 py-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="font-semibold">{item.name}</p>
-                <span className={item.ok ? "text-sm font-semibold text-primary" : "text-sm font-semibold text-danger"}>{item.ok ? "Healthy" : "Failed"}</span>
-              </div>
-              <p className="text-sm text-muted">Last check: {item.at}</p>
-              <div className="flex flex-wrap gap-2">
-                <button type="button" className={ghost} onClick={() => setItems((list) => list.map((row, j) => (j === i ? { ...row, ok: true, at: "Just now" } : row)))}>Mark healthy</button>
-                <button type="button" className={ghost} onClick={() => setItems((list) => list.map((row, j) => (j === i ? { ...row, ok: false, at: "Just now" } : row)))}>Mark failed</button>
-              </div>
-              <label className="text-sm font-semibold">
-                Note after a fail
-                <input className={field} value={item.note} onChange={(e) => setItems((list) => list.map((row, j) => (j === i ? { ...row, note: e.target.value } : row)))} />
-              </label>
+      <DemoNote>These are sample flows with sample links. Open one to read the error and why it happened. You cannot add your own link here.</DemoNote>
+      <div className="grid gap-4 lg:grid-cols-[240px_1fr]">
+        <ul className="grid gap-2">
+          {sampleFlows.map((item, index) => (
+            <li key={item.name}>
+              <button
+                type="button"
+                onClick={() => setOpen(index)}
+                className={`w-full rounded-lg border px-3 py-2 text-left text-sm ${index === open ? "border-primary bg-surface font-semibold" : "border-line bg-surface"}`}
+              >
+                {item.name}
+              </button>
             </li>
           ))}
         </ul>
-      </Panel>
+        <Panel title={flow.name}>
+          <p className="text-sm text-muted">Sample link</p>
+          <p className="mt-1 break-all font-mono text-sm">{flow.link}</p>
+          <p className="mt-4 text-sm font-semibold">What the platform said</p>
+          <p className="mt-1 text-sm text-danger">{flow.raw}</p>
+          <p className="mt-4 text-sm font-semibold">What that means</p>
+          <p className="mt-1 text-sm text-muted">{flow.means}</p>
+          <p className="mt-4 text-sm font-semibold">Why it happens</p>
+          <p className="mt-1 text-sm text-muted">{flow.why}</p>
+        </Panel>
+      </div>
     </div>
   );
 }
@@ -163,101 +204,73 @@ export function FormInboxDemo() {
   );
 }
 
-type DnsRow = { type: string; present: boolean; detail: string };
-
-export function MailFlowDemo() {
-  const [domain, setDomain] = useState("");
-  const [rows, setRows] = useState<DnsRow[]>([]);
-  const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
-  async function lookup(name: string, type: string) {
-    const url = `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(name)}&type=${type}`;
-    const res = await fetch(url, { headers: { accept: "application/dns-json" } });
-    if (!res.ok) throw new Error("DNS lookup failed");
-    const data = (await res.json()) as { Answer?: { data: string }[] };
-    return (data.Answer ?? []).map((a) => a.data.replace(/^"|"$/g, ""));
-  }
-  return (
-    <div className="grid gap-4">
-      <DemoNote>Looks up public mail records for a domain you type. It does not send mail and it does not log into Zoho.</DemoNote>
-      <Panel title="Domain">
-        <form
-          className="flex flex-col gap-2 sm:flex-row"
-          onSubmit={async (e) => {
-            e.preventDefault();
-            const host = domain.trim().replace(/^https?:\/\//, "").split("/")[0];
-            if (!host) return;
-            setBusy(true);
-            setError("");
-            try {
-              const txt = await lookup(host, "TXT");
-              const spf = txt.find((r) => r.toLowerCase().includes("v=spf1"));
-              const dmarc = await lookup(`_dmarc.${host}`, "TXT");
-              const dkimSelectors = ["google", "selector1", "zoho", "s1"];
-              const dkimHits: string[] = [];
-              for (const sel of dkimSelectors) {
-                const hit = await lookup(`${sel}._domainkey.${host}`, "TXT");
-                if (hit.some((r) => r.toLowerCase().includes("v=dkim1"))) dkimHits.push(sel);
-              }
-              setRows([
-                { type: "SPF", present: Boolean(spf), detail: spf ?? "No SPF TXT record" },
-                { type: "DMARC", present: dmarc.some((r) => r.toLowerCase().includes("v=dmarc1")), detail: dmarc[0] ?? "No DMARC record" },
-                { type: "DKIM", present: dkimHits.length > 0, detail: dkimHits.length ? `Found on ${dkimHits.join(", ")}` : "Not found on google, selector1, zoho, or s1" },
-              ]);
-            } catch {
-              setError("Could not look up that domain. Check the name and try again.");
-              setRows([]);
-            } finally {
-              setBusy(false);
-            }
-          }}
-        >
-          <input className={field} value={domain} onChange={(e) => setDomain(e.target.value)} placeholder="yourdomain.com" aria-label="Domain" />
-          <button className={btn} type="submit" disabled={busy}>{busy ? "Checking" : "Check records"}</button>
-        </form>
-        {error ? <p className="mt-3 text-sm text-danger">{error}</p> : null}
-        <ul className="mt-4 space-y-2 text-sm">
-          {rows.map((row) => (
-            <li key={row.type} className="rounded-lg border border-line p-3">
-              <p className="font-semibold">{row.type}: {row.present ? "Present" : "Missing"}</p>
-              <p className="text-muted">{row.detail}</p>
-            </li>
-          ))}
-        </ul>
-      </Panel>
-    </div>
-  );
-}
+const folders = ["Incoming", "Current", "Filed"] as const;
 
 export function SharePointBuilderDemo() {
-  const [libs, setLibs] = useState([{ name: "Client files", columns: "Client, Status, Current", who: "Delivery team" }]);
-  const [name, setName] = useState("");
-  const [columns, setColumns] = useState("");
-  const [who, setWho] = useState("");
-  const text = libs.map((l, i) => `${i + 1}. ${l.name}\nColumns: ${l.columns}\nWho can see it: ${l.who}`).join("\n\n");
+  const [files, setFiles] = useState([
+    { id: "quote", name: "Quote.pdf", client: "North depot", folder: "Incoming" as (typeof folders)[number] },
+    { id: "scope", name: "Signed scope.docx", client: "North depot", folder: "Current" as (typeof folders)[number] },
+    { id: "old", name: "2024 invoice.pdf", client: "Harbour clinic", folder: "Filed" as (typeof folders)[number] },
+  ]);
+  const [over, setOver] = useState<string | null>(null);
+
+  function move(id: string, folder: (typeof folders)[number]) {
+    setFiles((list) => list.map((file) => (file.id === id ? { ...file, folder } : file)));
+  }
+
   return (
     <div className="grid gap-4">
-      <DemoNote>Build the library plan here. Copy it out. This page does not create a SharePoint site.</DemoNote>
-      <Panel title="Libraries">
-        <form
-          className="grid gap-2"
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (!name.trim()) return;
-            setLibs((list) => [...list, { name: name.trim(), columns: columns.trim(), who: who.trim() }]);
-            setName("");
-            setColumns("");
-            setWho("");
-          }}
-        >
-          <input className={field} value={name} onChange={(e) => setName(e.target.value)} placeholder="Library name" aria-label="Library name" />
-          <input className={field} value={columns} onChange={(e) => setColumns(e.target.value)} placeholder="Columns, comma separated" aria-label="Columns" />
-          <input className={field} value={who} onChange={(e) => setWho(e.target.value)} placeholder="Who should see it" aria-label="Who should see it" />
-          <button className={btn} type="submit">Add library</button>
-        </form>
-        <pre className="mt-4 whitespace-pre-wrap text-sm">{text}</pre>
-        <button type="button" className={`${ghost} mt-3`} onClick={() => navigator.clipboard.writeText(text)}>Copy build list</button>
-      </Panel>
+      <DemoNote>Drag a file into a column. The status follows the move. This does not create a SharePoint site or upload anything.</DemoNote>
+      <div className="grid gap-3 md:grid-cols-3">
+        {folders.map((folder) => (
+          <section
+            key={folder}
+            className={`min-h-48 rounded-xl border bg-surface p-4 ${over === folder ? "border-primary" : "border-line"}`}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setOver(folder);
+            }}
+            onDragLeave={() => setOver((current) => (current === folder ? null : current))}
+            onDrop={(e) => {
+              e.preventDefault();
+              const id = e.dataTransfer.getData("text/plain");
+              if (id) move(id, folder);
+              setOver(null);
+            }}
+          >
+            <h2 className="font-display text-xl">{folder}</h2>
+            <ul className="mt-3 space-y-2">
+              {files
+                .filter((file) => file.folder === folder)
+                .map((file) => (
+                  <li key={file.id}>
+                    <div
+                      draggable
+                      onDragStart={(e) => e.dataTransfer.setData("text/plain", file.id)}
+                      className="cursor-grab rounded-lg border border-line bg-paper p-3 text-sm active:cursor-grabbing"
+                    >
+                      <p className="font-semibold">{file.name}</p>
+                      <p className="text-muted">{file.client}</p>
+                      <p className="mt-1 text-xs font-semibold">Status: {folder}</p>
+                    </div>
+                    <label className="mt-1 block text-xs text-muted">
+                      Move
+                      <select
+                        className={field}
+                        value={file.folder}
+                        onChange={(e) => move(file.id, e.target.value as (typeof folders)[number])}
+                      >
+                        {folders.map((option) => (
+                          <option key={option}>{option}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </li>
+                ))}
+            </ul>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
@@ -317,7 +330,6 @@ export const demos = {
   "automation-watch": AutomationWatchDemo,
   "excel-health-check": ExcelHealthDemo,
   "form-to-inbox-check": FormInboxDemo,
-  "mail-flow-check": MailFlowDemo,
   "sharepoint-library-builder": SharePointBuilderDemo,
   "change-request": ChangeRequestDemo,
 } as const;

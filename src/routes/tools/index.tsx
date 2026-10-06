@@ -24,7 +24,7 @@ function ToolsPage() {
       <PageIntro
         eyebrow="Tools"
         title="IT tools you can try."
-        lede="Cert Batch, the Microsoft licence comparison, and Website Growth Check are live. The rest are demos. A demo does not sign into Microsoft, Zoho, or your mailbox."
+        lede="Cert Batch, the Microsoft licence comparison, Website Growth Check, and the Zoho setup check are live. The rest are demos. A demo does not sign into Microsoft, Zoho, or your mailbox."
       />
       <ul className="mx-auto grid w-full max-w-6xl gap-4 px-5 md:grid-cols-2">
         {tools.map((tool) => (
