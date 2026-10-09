@@ -127,7 +127,11 @@ function Home() {
           Support after launch
         </h2>
         <p className="mt-3 max-w-2xl text-muted">
-          Three scopes. No prices on this site. Hours, response times, and fees are written into the agreement.
+          Starting prices for one-off work, Care, and Operations are on the{" "}
+          <Link to="/pricing" className="font-semibold text-primary">
+            Pricing
+          </Link>{" "}
+          page. The agreement names the systems, hours, and final fee.
         </p>
         <ul className="mt-8 grid gap-4 md:grid-cols-3">
           {plans.map((plan) => (

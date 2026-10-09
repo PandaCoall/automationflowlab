@@ -15,6 +15,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CustomBuildsRouteImport } from './routes/custom-builds'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SupportPlansRouteImport } from './routes/support-plans'
@@ -57,6 +58,11 @@ const CustomBuildsRoute = CustomBuildsRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/custom-builds': typeof CustomBuildsRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
@@ -153,6 +160,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/custom-builds': typeof CustomBuildsRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
@@ -175,6 +183,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/custom-builds': typeof CustomBuildsRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-builds'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/services'
     | '/support-plans'
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-builds'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/services'
     | '/support-plans'
@@ -240,6 +251,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-builds'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/services'
     | '/support-plans'
@@ -262,6 +274,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CustomBuildsRoute: typeof CustomBuildsRoute
   LoginRoute: typeof LoginRoute
+  PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   ServicesRoute: typeof ServicesRoute
   SupportPlansRoute: typeof SupportPlansRoute
@@ -319,6 +332,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -422,6 +442,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CustomBuildsRoute: CustomBuildsRoute,
   LoginRoute: LoginRoute,
+  PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   ServicesRoute: ServicesRoute,
   SupportPlansRoute: SupportPlansRoute,
