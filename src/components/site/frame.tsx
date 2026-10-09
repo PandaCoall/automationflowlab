@@ -27,6 +27,15 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
     setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [open]);
+
   return (
     <div className="flex min-h-screen flex-col bg-paper text-ink">
       <a
@@ -82,27 +91,48 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
             {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
         </div>
-        {open ? (
-          <nav id="mobile-nav" className="border-t border-line bg-paper px-5 py-3 lg:hidden" aria-label="Mobile">
-            <ul className="flex flex-col">
+      </header>
+      {open ? (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <button type="button" className="absolute inset-0 bg-ink/40" aria-label="Close menu" onClick={() => setOpen(false)} />
+          <nav
+            id="mobile-nav"
+            className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col border-l border-line bg-paper shadow-xl"
+            aria-label="Mobile"
+          >
+            <div className="flex h-16 items-center justify-between border-b border-line px-5">
+              <span className="font-display text-lg">{site.name}</span>
+              <button
+                type="button"
+                className="grid size-11 place-items-center rounded-sm border border-line bg-surface"
+                onClick={() => setOpen(false)}
+              >
+                <X aria-hidden="true" />
+                <span className="sr-only">Close menu</span>
+              </button>
+            </div>
+            <ul className="flex-1 overflow-y-auto px-3 py-3">
               {nav.map((item) => (
                 <li key={item.to}>
                   <Link
                     to={item.to}
                     aria-current={isActive(pathname, item.to) ? "page" : undefined}
-                    className="flex h-11 items-center text-base font-semibold"
+                    className={cn(
+                      "flex h-12 items-center rounded-sm px-2 text-base font-semibold",
+                      isActive(pathname, item.to) ? "bg-surface text-ink" : "text-ink",
+                    )}
                   >
                     {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="border-t border-line py-3">
+            <div className="border-t border-line px-5 py-3">
               <UserButton />
             </div>
           </nav>
-        ) : null}
-      </header>
+        </div>
+      ) : null}
       <main id="content" className="flex-1">
         {children}
       </main>
