@@ -133,7 +133,7 @@ function Home() {
           </Link>{" "}
           page. The agreement names the systems, hours, and final fee.
         </p>
-        <ul className="mt-8 grid gap-4 md:grid-cols-3">
+        <ul className="mt-8 grid gap-4 md:grid-cols-2">
           {plans.map((plan) => (
             <li key={plan.id} className="rounded-xl border border-line bg-surface p-6">
               <h3 className="font-display text-2xl">{plan.name}</h3>

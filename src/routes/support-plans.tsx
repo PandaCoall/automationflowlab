@@ -3,7 +3,7 @@ import { EnquiryForm } from "@/components/site/enquiry-form";
 import { PageIntro } from "@/components/site/frame";
 import { planAgreementNote, plans, type PlanId } from "@/lib/site-content";
 
-const planIds: PlanId[] = ["care", "operations", "partner"];
+const planIds: PlanId[] = ["care", "operations"];
 
 export const Route = createFileRoute("/support-plans")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -15,7 +15,7 @@ export const Route = createFileRoute("/support-plans")({
       {
         name: "description",
         content:
-          "Care and Operations have starting prices on the Pricing page. Partner is scoped in the agreement. Hours, exclusions, and the final fee are confirmed in writing.",
+          "Care and Operations are the support plans. Starting prices are on the Pricing page. Hours, exclusions, and the final fee are confirmed in writing.",
       },
     ],
   }),
@@ -29,14 +29,14 @@ function SupportPage() {
       <PageIntro
         eyebrow="Support Plans"
         title="Stay on after the build, if you want to"
-        lede="Care and Operations have starting prices on the Pricing page. Partner is scoped in the agreement. The agreement is what makes a plan binding."
+        lede="Care covers one system. Operations covers connected systems. Starting prices are on the Pricing page. The agreement is what makes a plan binding."
       />
       <p className="mx-auto -mt-6 w-full max-w-6xl px-5 text-sm">
         <Link to="/pricing" className="font-semibold text-primary">
           See starting prices
         </Link>
       </p>
-      <ul className="mx-auto mt-8 grid w-full max-w-6xl gap-4 px-5 md:grid-cols-3">
+      <ul className="mx-auto mt-8 grid w-full max-w-6xl gap-4 px-5 md:grid-cols-2">
         {plans.map((item) => (
           <li key={item.id} className="flex flex-col rounded-xl border border-line bg-surface p-6">
             <h2 className="font-display text-3xl">{item.name}</h2>

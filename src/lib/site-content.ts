@@ -287,7 +287,7 @@ export const buildSteps = [
   },
 ] as const;
 
-export type PlanId = "care" | "operations" | "partner";
+export type PlanId = "care" | "operations";
 
 export type Plan = {
   id: PlanId;
@@ -325,20 +325,6 @@ export const plans: Plan[] = [
     notIncluded: [
       "A standing backlog of new features",
       "Systems that are not named in the agreement",
-    ],
-  },
-  {
-    id: "partner",
-    name: "Partner",
-    for: "Priority ongoing improvement and planned development.",
-    includes: [
-      "Everything in Operations",
-      "Development time for improvements agreed in advance",
-      "Those planned items scheduled ahead of one-off requests",
-    ],
-    notIncluded: [
-      "Unnamed or unlimited scope",
-      "A promise that every new idea starts immediately",
     ],
   },
 ];

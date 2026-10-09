@@ -1,7 +1,7 @@
 export const enquiryKinds = ["contact", "tool", "custom", "plan"] as const;
 export type EnquiryKind = (typeof enquiryKinds)[number];
 
-export const planIds = ["care", "operations", "partner"] as const;
+export const planIds = ["care", "operations"] as const;
 export type PlanId = (typeof planIds)[number];
 
 export type EnquiryInput = {
@@ -121,7 +121,7 @@ export function parseEnquiry(
     fieldErrors.topic = "Choose a tool.";
   }
   if (kind === "plan" && !planIds.includes(value.plan as PlanId)) {
-    fieldErrors.plan = "Choose Care, Operations, or Partner.";
+    fieldErrors.plan = "Choose Care or Operations.";
   }
   if (kind === "custom") {
     if (value.businessProblem.length < 10) {

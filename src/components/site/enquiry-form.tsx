@@ -18,7 +18,6 @@ type Props = {
 const planOptions = [
   { id: "care", label: "Care — one system" },
   { id: "operations", label: "Operations — several systems" },
-  { id: "partner", label: "Partner — planned improvement" },
 ] as const;
 
 export function EnquiryForm({ kind, topic = "", plan = "", heading = "Send an enquiry", intro }: Props) {
