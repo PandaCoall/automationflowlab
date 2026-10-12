@@ -187,7 +187,7 @@ export function CertApp() {
       <header className="border-b border-line bg-paper">
         <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-4 px-5 py-6">
           <div>
-            <p className="text-xs font-medium tracking-[0.18em] text-primary uppercase">Cert Batch</p>
+            <p className="text-xs font-medium tracking-[0.18em] text-primary uppercase">Certflow</p>
             <h1 className="font-display text-3xl leading-tight sm:text-4xl">One list. One run.</h1>
             <p className="mt-1 max-w-xl text-sm text-muted">
               Excel or CSV in. A PDF per learner. Failed rows retry on their own — the batch does not stop.

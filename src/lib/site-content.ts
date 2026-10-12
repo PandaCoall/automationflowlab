@@ -32,13 +32,13 @@ export type Tool = {
 };
 
 /**
- * "available" means the signed-in product works (Cert Batch).
+ * "available" means the signed-in product works (Certflow).
  * "demo" means you can try it in the browser with your own inputs. It does not write to the customer's live systems.
  */
 export const tools: Tool[] = [
   {
-    slug: "cert-batch",
-    name: "Cert Batch",
+    slug: "certflow",
+    name: "Certflow",
     status: "available",
     summary: "Turn a learner spreadsheet into one certificate PDF per person, then run the send queue without stopping the whole batch.",
     audience: "Training teams who still build hundreds of certificates by hand or through a flow that dies halfway.",

@@ -24,6 +24,7 @@ import { Route as ApiLicenseCatalogRouteImport } from './routes/api/license-cata
 import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as ToolsSlugRouteImport } from './routes/tools/$slug'
 import { Route as ToolsCertBatchRouteImport } from './routes/tools/cert-batch'
+import { Route as ToolsCertflowRouteImport } from './routes/tools/certflow'
 import { Route as ToolsGrowthCheckRouteImport } from './routes/tools/growth-check'
 import { Route as ToolsLicenseCompareRouteImport } from './routes/tools/license-compare'
 import { Route as ToolsZohoFitRouteImport } from './routes/tools/zoho-fit'
@@ -105,6 +106,11 @@ const ToolsCertBatchRoute = ToolsCertBatchRouteImport.update({
   path: '/tools/cert-batch',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsCertflowRoute = ToolsCertflowRouteImport.update({
+  id: '/tools/certflow',
+  path: '/tools/certflow',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsGrowthCheckRoute = ToolsGrowthCheckRouteImport.update({
   id: '/tools/growth-check',
   path: '/tools/growth-check',
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/cert-batch': typeof ToolsCertBatchRoute
+  '/tools/certflow': typeof ToolsCertflowRoute
   '/tools/growth-check': typeof ToolsGrowthCheckRoute
   '/tools/license-compare': typeof ToolsLicenseCompareRoute
   '/tools/zoho-fit': typeof ToolsZohoFitRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/cert-batch': typeof ToolsCertBatchRoute
+  '/tools/certflow': typeof ToolsCertflowRoute
   '/tools/growth-check': typeof ToolsGrowthCheckRoute
   '/tools/license-compare': typeof ToolsLicenseCompareRoute
   '/tools/zoho-fit': typeof ToolsZohoFitRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/tools/cert-batch': typeof ToolsCertBatchRoute
+  '/tools/certflow': typeof ToolsCertflowRoute
   '/tools/growth-check': typeof ToolsGrowthCheckRoute
   '/tools/license-compare': typeof ToolsLicenseCompareRoute
   '/tools/zoho-fit': typeof ToolsZohoFitRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/api/license-catalog'
     | '/tools/$slug'
     | '/tools/cert-batch'
+    | '/tools/certflow'
     | '/tools/growth-check'
     | '/tools/license-compare'
     | '/tools/zoho-fit'
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/api/license-catalog'
     | '/tools/$slug'
     | '/tools/cert-batch'
+    | '/tools/certflow'
     | '/tools/growth-check'
     | '/tools/license-compare'
     | '/tools/zoho-fit'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/api/license-catalog'
     | '/tools/$slug'
     | '/tools/cert-batch'
+    | '/tools/certflow'
     | '/tools/growth-check'
     | '/tools/license-compare'
     | '/tools/zoho-fit'
@@ -282,6 +294,7 @@ export interface RootRouteChildren {
   ApiLicenseCatalogRoute: typeof ApiLicenseCatalogRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
   ToolsCertBatchRoute: typeof ToolsCertBatchRoute
+  ToolsCertflowRoute: typeof ToolsCertflowRoute
   ToolsGrowthCheckRoute: typeof ToolsGrowthCheckRoute
   ToolsLicenseCompareRoute: typeof ToolsLicenseCompareRoute
   ToolsZohoFitRoute: typeof ToolsZohoFitRoute
@@ -397,6 +410,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsCertBatchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/certflow': {
+      id: '/tools/certflow'
+      path: '/tools/certflow'
+      fullPath: '/tools/certflow'
+      preLoaderRoute: typeof ToolsCertflowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/growth-check': {
       id: '/tools/growth-check'
       path: '/tools/growth-check'
@@ -450,6 +470,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiLicenseCatalogRoute: ApiLicenseCatalogRoute,
   ToolsSlugRoute: ToolsSlugRoute,
   ToolsCertBatchRoute: ToolsCertBatchRoute,
+  ToolsCertflowRoute: ToolsCertflowRoute,
   ToolsGrowthCheckRoute: ToolsGrowthCheckRoute,
   ToolsLicenseCompareRoute: ToolsLicenseCompareRoute,
   ToolsZohoFitRoute: ToolsZohoFitRoute,

@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 
 export function ToolOpen({ slug, label, className }: { slug: string; label: string; className: string }) {
-  if (slug === "cert-batch") {
+  if (slug === "certflow") {
     return (
-      <Link to="/tools/cert-batch" className={className}>
+      <Link to="/tools/certflow" className={className}>
         {label}
       </Link>
     );

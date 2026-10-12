@@ -39,7 +39,7 @@ function Home() {
           <div className="mt-5 border-t border-line pt-5">
             <h3 className="font-sans text-base font-semibold">Use a tool we are building</h3>
             <p className="mt-2 text-sm text-muted">
-              The catalogue is IT work you can try, including a free Microsoft licence comparison. Cert Batch and that comparison are live. The others are browser demos.
+              The catalogue is IT work you can try, including a free Microsoft licence comparison. Certflow and that comparison are live. The others are browser demos.
             </p>
             <Link to="/tools" className="mt-3 inline-flex h-11 items-center text-sm font-semibold text-primary">
               Open the catalogue
