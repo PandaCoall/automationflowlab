@@ -71,9 +71,9 @@ export const Route = createFileRoute("/api/growth-check")({
                   {
                     status: "NEEDS WORK",
                     area: "Technical Quality",
-                    summary: "This scan was stopped by a security check before the website could be read.",
+                    summary: "This check could not read the website.",
                     meaning:
-                      "A normal visitor may still see the site. Offer, trust, search, and the enquiry path are not scored from a block page. A full audit opens the site directly.",
+                      "A visitor may still see the site. A paid audit looks at the site directly.",
                   },
                 ],
               });
