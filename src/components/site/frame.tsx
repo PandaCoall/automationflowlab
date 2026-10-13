@@ -191,7 +191,7 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
           <Link to="/legal-safety" className="font-semibold text-muted hover:text-ink">
             Legal & Safety
           </Link>
-          <Link to="/contact" className="font-semibold text-muted hover:text-ink">
+          <Link to="/contact" search={{ topic: "" }} className="font-semibold text-muted hover:text-ink">
             Contact
           </Link>
         </nav>

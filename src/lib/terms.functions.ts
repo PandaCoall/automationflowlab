@@ -13,6 +13,13 @@ export const recordTermsAcceptance = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { getSql } = await import("@/lib/db");
     const sql = await getSql();
+    await sql`create table if not exists terms_acceptances (
+      id text primary key,
+      version text not null,
+      accepted_at timestamptz not null default now(),
+      context text not null,
+      user_id text
+    )`;
     const id = crypto.randomUUID();
     await sql`insert into terms_acceptances (id, version, context) values (${id}, ${data.version}, ${data.context})`;
     return { id, version: data.version };

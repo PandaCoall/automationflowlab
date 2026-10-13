@@ -238,7 +238,10 @@ export const cookiePage: PolicyPage = {
       "__Host-grok-auth.account_data. Necessary. First-party. Used by the sign-in system when account data must be carried with the session. It is not used for advertising.",
       "__Host-grok-auth.dont_remember. Necessary. First-party. Records a sign-in persistence choice when that option is used. It is not used for advertising.",
       "__Host-grok_gate_session. Necessary. First-party. Marks that a sign-in session was established, so the site can tell a new sign-in from an existing one. It is not used for advertising.",
-      "No tracking pixels are in use. The public tools do not write a marketing or analytics key to local storage.",
+      "No tracking pixels are in use.",
+      "afl-terms-acceptance. Browser local storage. Necessary. First-party. After a person accepts the Terms on staff sign-in, this browser stores the acceptance record identifier, version and time, so that acceptance can be linked to the account. It stays until site data is cleared. It is not used for advertising or analytics.",
+      "grok-auth.bearer-token. Browser session storage. Necessary. First-party. Set only inside an embedded preview after sign-in, when the browser isolates cookies. Removed when that tab session ends. An ordinary visit to automationflowlab.com does not set it. It is not used for advertising or analytics.",
+      "The public tools do not write a marketing or analytics key to local storage.",
     ]),
     section("6. Updates and contact", [
       "We update this policy and register when technologies change.",

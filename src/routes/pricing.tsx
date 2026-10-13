@@ -164,7 +164,7 @@ function PricingPage() {
         <p className="mt-4 max-w-3xl text-sm text-muted">
           Your support agreement will list the systems covered and the work included. Support is optional after a build.
         </p>
-        <Link to="/support-plans" hash="request" className="mt-4 inline-flex h-11 items-center font-semibold text-primary">
+        <Link to="/support-plans" search={{ plan: "" }} hash="request" className="mt-4 inline-flex h-11 items-center font-semibold text-primary">
           Ask about a support plan
         </Link>
       </section>
@@ -187,7 +187,7 @@ function PricingPage() {
             Prices are in South African rand and are subject to terms and conditions. Final project prices depend on the agreed scope. Third-party software, hosting, and usage fees are separate unless included in your quote. VAT applies where required.
           </p>
           <p>
-            Support hours apply to the systems named in your agreement and do not roll over. A response target means we will acknowledge and assess the issue within that time; it is not a promise that every issue will be resolved by then. Support operates during South African business hours.
+            Support hours apply to the systems named in your agreement and do not roll over. A response target, where one is agreed, means we will acknowledge and assess the issue within that time; it is not a promise that every issue will be resolved by then. No general support timetable is promised on this page.
           </p>
           <p>
             New features, major changes, and work on systems outside your plan receive a separate quote. Additional support time is R1,500 per hour, approved by you before it is used. If we did not build a system, we may need to assess it before confirming its support plan and price.
@@ -221,7 +221,7 @@ function PricingPage() {
           <Link to="/custom-builds" className="inline-flex h-11 items-center font-semibold text-primary">
             Start a project enquiry
           </Link>
-          <Link to="/support-plans" hash="request" className="inline-flex h-11 items-center font-semibold text-primary">
+          <Link to="/support-plans" search={{ plan: "" }} hash="request" className="inline-flex h-11 items-center font-semibold text-primary">
             Request monthly support
           </Link>
         </div>

@@ -3,6 +3,14 @@ import { legal, type PolicyPage } from "@/lib/legal";
 
 const linkPattern = /(https?:\/\/[^\s]+|Automationflowlab\.info@proton\.me)/g;
 
+function isSubheading(text: string) {
+  const trimmed = text.trim();
+  if (trimmed.length > 72 || trimmed.length < 3) return false;
+  if (/[.!?:]$/.test(trimmed)) return false;
+  if (trimmed.startsWith("_") || trimmed.startsWith("http") || trimmed.includes("@")) return false;
+  return /^[A-Z]/.test(trimmed);
+}
+
 function RichText({ text }: { text: string }) {
   const parts = text.split(linkPattern);
   return (
@@ -66,11 +74,17 @@ export function PolicyDocument({ page }: { page: PolicyPage }) {
           <section key={item.id} id={item.id} className="scroll-mt-24">
             <h2 className="font-display text-2xl">{item.heading}</h2>
             <div className="mt-4 space-y-4 leading-relaxed text-muted">
-              {item.paragraphs.map((paragraph) => (
-                <p key={paragraph}>
-                  <RichText text={paragraph} />
-                </p>
-              ))}
+              {item.paragraphs.map((paragraph) =>
+                isSubheading(paragraph) ? (
+                  <h3 key={paragraph} className="pt-2 font-display text-xl text-ink">
+                    {paragraph}
+                  </h3>
+                ) : (
+                  <p key={paragraph}>
+                    <RichText text={paragraph} />
+                  </p>
+                ),
+              )}
             </div>
           </section>
         ))}

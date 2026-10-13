@@ -79,6 +79,13 @@ function GrowthPage() {
             className="mt-1 h-11 w-full rounded-sm border border-line bg-paper px-3 text-sm"
           />
         </label>
+        <p className="text-sm text-muted">
+          The website address, and the optional description if you add one, are sent so this check can read the public page. They are not saved as an account or an enquiry.{" "}
+          <Link to="/privacy" className="font-semibold underline decoration-line underline-offset-4">
+            Privacy Policy
+          </Link>
+          .
+        </p>
         <button type="submit" disabled={busy} className="inline-flex h-11 items-center justify-center rounded-sm bg-primary px-4 text-sm font-semibold text-primary-fg">
           {busy ? "Checking" : "Check website"}
         </button>

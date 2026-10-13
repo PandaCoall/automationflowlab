@@ -329,6 +329,7 @@ export type Verdict = {
     group: Product["group"];
     note: string;
     features: string[];
+    covers: string[];
     monthly: number;
     total: number;
     unit: Product["unit"];

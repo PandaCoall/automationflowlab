@@ -123,7 +123,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-Cds1EwdD.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-BDI0Nx0U.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -149,7 +149,7 @@ var manifest = {
 	},
 	"0a38e1c23fec9feca51951b7d362e63e32d88434c246c06928fc9666115d46f5": {
 		functionName: "recordTermsAcceptance_createServerFn_handler",
-		importer: () => import("./terms.functions-C0SkAPii.mjs")
+		importer: () => import("./terms.functions-sCD08w4N.mjs")
 	},
 	"0fb59186323b3d475fec9686a6002dedc68c1744051ec28f54e9c670ac9c77ba": {
 		functionName: "setSubmissionStatus_createServerFn_handler",
@@ -165,7 +165,7 @@ var manifest = {
 	},
 	"5d0bf66196d8d696f51b798350a6840f5875dcfbf54d4e2786d118972adb7c99": {
 		functionName: "attachTermsAcceptance_createServerFn_handler",
-		importer: () => import("./terms.functions-C0SkAPii.mjs")
+		importer: () => import("./terms.functions-sCD08w4N.mjs")
 	}
 };
 async function getServerFnById(id, access) {
@@ -1570,7 +1570,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-CX_y2gCX.mjs").then((n) => n.t),
+		import("./router-vd1vzWli.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);
