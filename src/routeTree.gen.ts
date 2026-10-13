@@ -12,13 +12,19 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CommunityStandardsRouteImport } from './routes/community-standards'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as CopyrightRouteImport } from './routes/copyright'
 import { Route as CustomBuildsRouteImport } from './routes/custom-builds'
+import { Route as LegalRouteImport } from './routes/legal'
+import { Route as LegalSafetyRouteImport } from './routes/legal-safety'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SupportPlansRouteImport } from './routes/support-plans'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ApiGrowthCheckRouteImport } from './routes/api/growth-check'
 import { Route as ApiLicenseCatalogRouteImport } from './routes/api/license-catalog'
 import { Route as ToolsIndexRouteImport } from './routes/tools/index'
@@ -46,14 +52,39 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommunityStandardsRoute = CommunityStandardsRouteImport.update({
+  id: '/community-standards',
+  path: '/community-standards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CopyrightRoute = CopyrightRouteImport.update({
+  id: '/copyright',
+  path: '/copyright',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CustomBuildsRoute = CustomBuildsRouteImport.update({
   id: '/custom-builds',
   path: '/custom-builds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalSafetyRoute = LegalSafetyRouteImport.update({
+  id: '/legal-safety',
+  path: '/legal-safety',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -79,6 +110,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const SupportPlansRoute = SupportPlansRouteImport.update({
   id: '/support-plans',
   path: '/support-plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiGrowthCheckRoute = ApiGrowthCheckRouteImport.update({
@@ -141,13 +177,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/community-standards': typeof CommunityStandardsRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/copyright': typeof CopyrightRoute
   '/custom-builds': typeof CustomBuildsRoute
+  '/legal': typeof LegalRoute
+  '/legal-safety': typeof LegalSafetyRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
+  '/terms': typeof TermsRoute
   '/api/growth-check': typeof ApiGrowthCheckRoute
   '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
@@ -164,13 +206,19 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/community-standards': typeof CommunityStandardsRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/copyright': typeof CopyrightRoute
   '/custom-builds': typeof CustomBuildsRoute
+  '/legal': typeof LegalRoute
+  '/legal-safety': typeof LegalSafetyRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
+  '/terms': typeof TermsRoute
   '/api/growth-check': typeof ApiGrowthCheckRoute
   '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
@@ -188,13 +236,19 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/community-standards': typeof CommunityStandardsRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/copyright': typeof CopyrightRoute
   '/custom-builds': typeof CustomBuildsRoute
+  '/legal': typeof LegalRoute
+  '/legal-safety': typeof LegalSafetyRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/support-plans': typeof SupportPlansRoute
+  '/terms': typeof TermsRoute
   '/api/growth-check': typeof ApiGrowthCheckRoute
   '/api/license-catalog': typeof ApiLicenseCatalogRoute
   '/tools/$slug': typeof ToolsSlugRoute
@@ -213,13 +267,19 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/community-standards'
     | '/contact'
+    | '/cookies'
+    | '/copyright'
     | '/custom-builds'
+    | '/legal'
+    | '/legal-safety'
     | '/login'
     | '/pricing'
     | '/privacy'
     | '/services'
     | '/support-plans'
+    | '/terms'
     | '/api/growth-check'
     | '/api/license-catalog'
     | '/tools/$slug'
@@ -236,13 +296,19 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/community-standards'
     | '/contact'
+    | '/cookies'
+    | '/copyright'
     | '/custom-builds'
+    | '/legal'
+    | '/legal-safety'
     | '/login'
     | '/pricing'
     | '/privacy'
     | '/services'
     | '/support-plans'
+    | '/terms'
     | '/api/growth-check'
     | '/api/license-catalog'
     | '/tools/$slug'
@@ -259,13 +325,19 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/community-standards'
     | '/contact'
+    | '/cookies'
+    | '/copyright'
     | '/custom-builds'
+    | '/legal'
+    | '/legal-safety'
     | '/login'
     | '/pricing'
     | '/privacy'
     | '/services'
     | '/support-plans'
+    | '/terms'
     | '/api/growth-check'
     | '/api/license-catalog'
     | '/tools/$slug'
@@ -283,13 +355,19 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  CommunityStandardsRoute: typeof CommunityStandardsRoute
   ContactRoute: typeof ContactRoute
+  CookiesRoute: typeof CookiesRoute
+  CopyrightRoute: typeof CopyrightRoute
   CustomBuildsRoute: typeof CustomBuildsRoute
+  LegalRoute: typeof LegalRoute
+  LegalSafetyRoute: typeof LegalSafetyRoute
   LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   ServicesRoute: typeof ServicesRoute
   SupportPlansRoute: typeof SupportPlansRoute
+  TermsRoute: typeof TermsRoute
   ApiGrowthCheckRoute: typeof ApiGrowthCheckRoute
   ApiLicenseCatalogRoute: typeof ApiLicenseCatalogRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
@@ -326,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/community-standards': {
+      id: '/community-standards'
+      path: '/community-standards'
+      fullPath: '/community-standards'
+      preLoaderRoute: typeof CommunityStandardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -333,11 +418,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/copyright': {
+      id: '/copyright'
+      path: '/copyright'
+      fullPath: '/copyright'
+      preLoaderRoute: typeof CopyrightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/custom-builds': {
       id: '/custom-builds'
       path: '/custom-builds'
       fullPath: '/custom-builds'
       preLoaderRoute: typeof CustomBuildsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal-safety': {
+      id: '/legal-safety'
+      path: '/legal-safety'
+      fullPath: '/legal-safety'
+      preLoaderRoute: typeof LegalSafetyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -373,6 +486,13 @@ declare module '@tanstack/react-router' {
       path: '/support-plans'
       fullPath: '/support-plans'
       preLoaderRoute: typeof SupportPlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/growth-check': {
@@ -459,13 +579,19 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  CommunityStandardsRoute: CommunityStandardsRoute,
   ContactRoute: ContactRoute,
+  CookiesRoute: CookiesRoute,
+  CopyrightRoute: CopyrightRoute,
   CustomBuildsRoute: CustomBuildsRoute,
+  LegalRoute: LegalRoute,
+  LegalSafetyRoute: LegalSafetyRoute,
   LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   ServicesRoute: ServicesRoute,
   SupportPlansRoute: SupportPlansRoute,
+  TermsRoute: TermsRoute,
   ApiGrowthCheckRoute: ApiGrowthCheckRoute,
   ApiLicenseCatalogRoute: ApiLicenseCatalogRoute,
   ToolsSlugRoute: ToolsSlugRoute,

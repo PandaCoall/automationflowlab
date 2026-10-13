@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -246,7 +247,13 @@ export function EnquiryForm({ kind, topic = "", plan = "", heading = "Send an en
               checked={consent}
               onChange={(event) => setConsent(event.target.checked)}
             />
-            <span>I agree that Automation Flow Lab may store these details to reply to this enquiry.</span>
+            <span>
+              I agree that AutomationFlowLab may store these details to reply to this enquiry. This is not consent to marketing.{" "}
+              <Link to="/privacy" className="font-semibold underline decoration-line underline-offset-4">
+                Privacy Policy
+              </Link>
+              .
+            </span>
           </label>
           {errors.consent ? <p className="mt-1 text-sm text-danger">{errors.consent}</p> : null}
           <p className="mt-3 text-sm text-muted">{privacySummary}</p>

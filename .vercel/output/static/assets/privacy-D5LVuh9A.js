@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BucyYGg8.js";import{s as t}from"./legal-7QTwd8yF.js";import{t as n}from"./policy-document-2WAvhP_W.js";var r=e(),i=()=>(0,r.jsx)(n,{page:t});export{i as component};

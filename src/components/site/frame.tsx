@@ -2,6 +2,7 @@ import { Link, useRouter, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { UserButton } from "@/lib/auth/gates";
+import { legal } from "@/lib/legal";
 import { nav, site } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
 import { Mark } from "@/components/site/mark";
@@ -164,11 +165,6 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
             <p className="text-sm font-semibold">More</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <Link to="/privacy" className="text-muted hover:text-ink">
-                  Privacy
-                </Link>
-              </li>
-              <li>
                 <Link to="/admin" className="text-muted hover:text-ink">
                   Submission inbox
                 </Link>
@@ -176,6 +172,32 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
             </ul>
           </div>
         </div>
+        <nav className="mx-auto flex w-full max-w-6xl flex-wrap gap-x-4 gap-y-2 px-5 pb-4 text-sm" aria-label="Legal">
+          <Link to="/terms" className="font-semibold text-muted hover:text-ink">
+            Terms
+          </Link>
+          <Link to="/privacy" className="font-semibold text-muted hover:text-ink">
+            Privacy
+          </Link>
+          <Link to="/cookies" className="font-semibold text-muted hover:text-ink">
+            Cookies
+          </Link>
+          <Link to="/community-standards" className="font-semibold text-muted hover:text-ink">
+            Community Standards
+          </Link>
+          <Link to="/copyright" className="font-semibold text-muted hover:text-ink">
+            Copyright
+          </Link>
+          <Link to="/legal-safety" className="font-semibold text-muted hover:text-ink">
+            Legal & Safety
+          </Link>
+          <Link to="/contact" className="font-semibold text-muted hover:text-ink">
+            Contact
+          </Link>
+        </nav>
+        <p className="mx-auto w-full max-w-6xl px-5 pb-2 text-xs text-muted">
+          {legal.company} · Company registration {legal.registration} · {legal.country}
+        </p>
         <p className="mx-auto w-full max-w-6xl px-5 pb-8 text-xs text-muted">
           Information on this site is for general use at your own discretion. Automation Flow Lab is not liable for any loss, cost, or decision made from it. Check the original source before you buy or rely on a figure.
         </p>

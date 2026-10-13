@@ -8,7 +8,7 @@
  * contact we will notify if email delivery is configured.
  */
 export const contentSettings = {
-  contactEmail: "info@automationflowlab.com",
+  contactEmail: "Automationflowlab.info@proton.me",
   domain: "automationflowlab.com",
   ownerName: "",
   ownerRole: "",
@@ -17,5 +17,5 @@ export const contentSettings = {
   location: "",
   phone: "",
   address: "",
-  adminEmails: ["info@automationflowlab.com"],
+  adminEmails: ["info@automationflowlab.com", "Automationflowlab.info@proton.me"],
 } as const;

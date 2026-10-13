@@ -123,7 +123,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-BzydM631.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-Cds1EwdD.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -145,19 +145,27 @@ async function getStartManifest(matchedRoutes) {
 var manifest = {
 	"0706f38b0444c8765d553b3809d2a3a34b1a1e28685ae7ad9a0801037e5d0c78": {
 		functionName: "submitEnquiry_createServerFn_handler",
-		importer: () => import("./inbox.functions-DKaElka1.mjs")
+		importer: () => import("./inbox.functions-Bz2R60Xu.mjs")
+	},
+	"0a38e1c23fec9feca51951b7d362e63e32d88434c246c06928fc9666115d46f5": {
+		functionName: "recordTermsAcceptance_createServerFn_handler",
+		importer: () => import("./terms.functions-C0SkAPii.mjs")
 	},
 	"0fb59186323b3d475fec9686a6002dedc68c1744051ec28f54e9c670ac9c77ba": {
 		functionName: "setSubmissionStatus_createServerFn_handler",
-		importer: () => import("./inbox.functions-DKaElka1.mjs")
+		importer: () => import("./inbox.functions-Bz2R60Xu.mjs")
 	},
 	"35f04cc976fc41c203f610c3457b2f6750a3bc99626a2619ab702ca8c0837069": {
 		functionName: "listInbox_createServerFn_handler",
-		importer: () => import("./inbox.functions-DKaElka1.mjs")
+		importer: () => import("./inbox.functions-Bz2R60Xu.mjs")
 	},
 	"3b8519963e37f6c4e2ccbe3659661738961c9742fed0aa6ab684a7bae5b70570": {
 		functionName: "saveInboxAdmin_createServerFn_handler",
-		importer: () => import("./inbox.functions-DKaElka1.mjs")
+		importer: () => import("./inbox.functions-Bz2R60Xu.mjs")
+	},
+	"5d0bf66196d8d696f51b798350a6840f5875dcfbf54d4e2786d118972adb7c99": {
+		functionName: "attachTermsAcceptance_createServerFn_handler",
+		importer: () => import("./terms.functions-C0SkAPii.mjs")
 	}
 };
 async function getServerFnById(id, access) {
@@ -1562,7 +1570,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-rIwxJfXx.mjs").then((n) => n.t),
+		import("./router-CX_y2gCX.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);

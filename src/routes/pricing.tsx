@@ -78,6 +78,15 @@ function PricingPage() {
         title="Clear starting prices for practical business systems."
         lede="Tell us what you need, and we’ll confirm the final scope and price before work begins."
       />
+      <div className="mx-auto w-full max-w-6xl space-y-4 px-5">
+        <p className="max-w-3xl text-sm text-muted">
+          AutomationFlowLab’s self-service app and tools are currently free to use. Professional services are separately quoted and charged under an accepted proposal or service agreement. Online payment functionality is not yet active.
+        </p>
+        <p className="max-w-3xl text-sm text-muted">
+          <span className="font-semibold text-ink">Future app pricing — not currently effective. </span>
+          Paid app plans may be introduced in future. You will be informed and asked to agree before any charges apply.
+        </p>
+      </div>
 
       <section className="mx-auto w-full max-w-6xl px-5" aria-labelledby="services-price-heading">
         <h2 id="services-price-heading" className="font-display text-3xl">
