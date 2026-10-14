@@ -16,7 +16,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Automation Flow Lab builds practical webapps, AI-powered workflows, and connected business systems, then supports them after launch.",
+          "Automation Flow Lab finds what's stopping a website from being found, trusted and turning visitors into customers.",
       },
       { name: "theme-color", content: "#c4004f" },
     ],

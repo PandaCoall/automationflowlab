@@ -1,0 +1,1 @@
+function e(e,t={}){if(typeof window>`u`)return;let n={event:e,...t};window.dispatchEvent(new CustomEvent(`afl:analytics`,{detail:n}));let r=window;r.dataLayer?.push(n),r.gtag?.(`event`,e,t)}export{e as t};

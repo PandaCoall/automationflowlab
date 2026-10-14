@@ -1,6 +1,6 @@
 export const legal = {
-  version: "1.0",
-  effectiveDate: "13 October 2026",
+  version: "1.1",
+  effectiveDate: "14 October 2026",
   email: "Automationflowlab.info@proton.me",
   company: "AUTOMATIONFLOWLAB (PTY) LTD",
   registration: "2026/796103/07",
@@ -35,7 +35,7 @@ export const termsPage: PolicyPage = {
   sections: [
     section("1. Operator and scope", [
       "AutomationFlowLab is operated by AUTOMATIONFLOWLAB (PTY) LTD, company registration number 2026/796103/07, in South Africa. References to “we”, “us” and “our” mean that company. Contact us at Automationflowlab.info@proton.me.",
-      "These terms govern automationflowlab.com, the app features made available through it and general use of our professional services. We provide business automation, AI automation, web application development and support, Excel troubleshooting, analytics, Zoho configuration and SharePoint design, as offered and agreed for each engagement.",
+      "These terms govern automationflowlab.com, the app features made available through it and general use of our professional services. The public tools are the Website Growth Check, Certflow, the Microsoft licence comparison and the Zoho setup check. Professional work, quoted separately, may include a Website Revenue & Growth Audit, website improvement, search growth, conversion work, monitoring, workflow automation, systems integration, Microsoft 365, SharePoint, Excel, Zoho, analytics, reporting and portals, as offered and agreed for each engagement.",
       "Please read these terms before creating an account, using a tool or engaging our services. A person accepting on behalf of an organisation must have authority to bind it.",
       "Separate accepted proposals, statements of work and service agreements govern their agreed professional-service scope and prevail over these general terms where they conflict, subject to applicable law.",
       "The Privacy Policy explains processing of personal information. Accepting these terms does not constitute blanket consent to optional marketing or tracking.",
@@ -63,7 +63,9 @@ export const termsPage: PolicyPage = {
       "No retainer or recurring service charge begins without agreement.",
       "The current free-access period applies only to the self-service app and tools. It does not make professional services free. Inactive online payment functionality does not remove payment obligations arising under a separately accepted professional-service agreement.",
       "Available app features",
-      "Features may include automation tools, spreadsheet checks, requests and approvals, business records, analytics, portals and integrations where enabled. Only features actually available are included.",
+      "The self-service tools currently available are the Website Growth Check, Certflow, the Microsoft licence comparison and the Zoho setup check. Demonstrations that are no longer published are not part of the service. Only features actually available are included.",
+      "The Website Growth Check reads a public website address and returns up to five findings. It is not a full audit and it does not include a repair guide. The address is used to perform that check. It is not saved as an account or an enquiry.",
+      "Certflow turns a learner list into certificates. The Microsoft licence comparison uses a public price list. The Zoho setup check suggests apps from the needs you select. Those tools do not sign into Microsoft, Zoho or a mailbox.",
       "We may apply reasonable, disclosed capacity limits to protect service availability. There is no guaranteed uptime, response time or recovery objective unless agreed in writing.",
     ]),
     section("4. Content and permitted use", [
@@ -73,7 +75,7 @@ export const termsPage: PolicyPage = {
       "Do not use the website, app or services for malware, phishing, fraud, harassment, unlawful surveillance, discriminatory decisions, unauthorised scraping, credential theft, spam or unlawful access.",
       "Do not bypass security controls, usage limits or another service’s terms. Do not upload secrets into ordinary forms or support messages.",
       "Test automations with sample data and review outputs before using them in production. Check recipient lists, amounts, source records and approval permissions before sending communications, changing records or running irreversible actions.",
-      "Use human oversight for decisions affecting employment, credit, health, legal rights or access to essential services. AI-assisted outputs may be inaccurate and require independent review.",
+      "Use human oversight for decisions affecting employment, credit, health, legal rights or access to essential services. Automated outputs, including website findings and generated certificates, may be incomplete or inaccurate and require independent review.",
       "Third-party services have their own terms, permissions and charges. Authorising an integration permits the operations described during connection and configured by you.",
       "Disconnecting an integration may stop future access but cannot undo actions already completed or delete records held independently by that provider. Report unexpected behaviour promptly.",
     ]),
@@ -94,7 +96,7 @@ export const termsPage: PolicyPage = {
       "Closing an app account does not automatically cancel a separate professional-service engagement or retainer. Service cancellation, termination, handover and any outstanding fees follow the accepted service agreement and applicable law.",
     ]),
     section("7. Availability and responsibility", [
-      "Automation may fail, duplicate work, produce incorrect results or be delayed by network problems, permissions, external providers or incorrect inputs.",
+      "A website check, a certificate run or an agreed workflow may fail, miss something, duplicate work or be delayed by the site being checked, network problems, permissions, external providers or incorrect inputs.",
       "Keep independent copies of essential records and monitor important workflows. Our tools and technical services do not replace qualified legal, accounting, tax, financial or other professional advice.",
       "We will exercise the care required by applicable law.",
       "To the extent legally permitted, we do not guarantee that the free app will always be uninterrupted, error-free or fit for a particular workflow.",
@@ -132,7 +134,9 @@ export const privacyPage: PolicyPage = {
       "For professional services, we may also process service enquiries, proposals, contracts, project requirements and correspondence, authorised client-system access information, test data, deliverables, acceptance records, support and retainer records, and invoicing or payment-status records where relevant to the engagement.",
       "Although app checkout is inactive, separately agreed professional work may still generate invoicing and payment records.",
       "Submit credentials only through an agreed appropriate channel, not ordinary enquiry forms or emails.",
-      "Tools may process uploaded spreadsheets, documents, business records, workflow instructions, approval records, generated reports and related metadata.",
+      "The Website Growth Check sends the website address you enter so the public page can be read. That address and the findings are not saved as an account or an enquiry.",
+      "Certflow may process the spreadsheet or list you upload, the certificate details and the status of a send queue for the job you start.",
+      "The Microsoft licence comparison and the Zoho setup check use the options you enter for that check. They do not sign into Microsoft, Zoho or a mailbox.",
       "Integrations may process identifiers, connection permissions and access tokens needed for authorised operations, together with selected records from connected systems.",
       "We may obtain information from you, your organisation’s authorised administrators and providers you connect.",
       "Required fields should be identified when collected. Without essential information we may be unable to provide the requested account, support, tool or professional service. Optional information is voluntary.",
@@ -150,12 +154,12 @@ export const privacyPage: PolicyPage = {
       "We do not sell personal information.",
     ]),
     section("4. Providers and recipients", [
-      "We disclose necessary information to providers supporting hosting, storage, authentication, email delivery, technical support and security, and to integration or AI providers where the relevant feature or agreed service requires them.",
+      "We disclose necessary information to providers supporting hosting, storage, authentication, email delivery, technical support and security. A professional engagement discloses a record to another provider only where that engagement requires it, and that provider is identified before the processing.",
       "Provider access must be limited to the applicable purpose and protected by appropriate contractual arrangements.",
       "Workspace administrators and authorised members may access records according to their permissions. Personnel authorised to deliver professional services may access necessary project information within the agreed scope.",
       "We may disclose information to professional advisers or authorities where reasonably necessary and legally justified. If a business restructuring affects information, applicable safeguards and notice requirements will apply.",
       "The named providers, their purposes and processing locations must be available in the service’s current provider register before affected processing begins.",
-      "Optional AI processing must identify the provider and data sent before use. We do not use confidential customer content for general-purpose model training without a separate lawful basis and explicit agreement.",
+      "If a professional engagement uses an external processor to analyse client material, we identify that provider and the data sent before use. We do not use confidential customer content for general-purpose model training without a separate lawful basis and explicit agreement.",
     ]),
     section("5. International processing", [
       "AutomationFlowLab operates from South Africa. Providers or integrations may process information in other countries.",
@@ -191,7 +195,7 @@ export const privacyPage: PolicyPage = {
     ]),
     section("9. Cookies, automated tools and changes", [
       "The Cookie Policy explains cookies and browser storage. Optional analytics or marketing tracking requires the choices described there.",
-      "Where enabled or agreed within a professional-service engagement, AI or automated tools may analyse inputs and suggest outputs.",
+      "The Website Growth Check reads a public page and returns a short set of findings. It is not a full audit. Where a professional engagement uses automated checks or workflows, review the results before acting.",
       "Review results before acting and do not rely solely on automated output for decisions with legal or similarly significant effects without the required lawful safeguards.",
       "We will identify material new processing before it begins and update this policy with its publication date and version. Where required, we will provide additional notice and obtain consent.",
       "Privacy commitments apply to the actual service configuration. A policy update cannot replace necessary technical or contractual safeguards.",
@@ -241,7 +245,7 @@ export const cookiePage: PolicyPage = {
       "No tracking pixels are in use.",
       "afl-terms-acceptance. Browser local storage. Necessary. First-party. After a person accepts the Terms on staff sign-in, this browser stores the acceptance record identifier, version and time, so that acceptance can be linked to the account. It stays until site data is cleared. It is not used for advertising or analytics.",
       "grok-auth.bearer-token. Browser session storage. Necessary. First-party. Set only inside an embedded preview after sign-in, when the browser isolates cookies. Removed when that tab session ends. An ordinary visit to automationflowlab.com does not set it. It is not used for advertising or analytics.",
-      "The public tools do not write a marketing or analytics key to local storage.",
+      "The public tools do not write a marketing or analytics key to local storage. The Website Growth Check does not set its own cookie.",
     ]),
     section("6. Updates and contact", [
       "We update this policy and register when technologies change.",
@@ -264,6 +268,7 @@ export const communityPage: PolicyPage = {
     section("2. Lawful business use", [
       "Use the app and services only for activities you are authorised to carry out.",
       "Do not forge approvals, manipulate business evidence, falsify certificates or records, commit fraud or help others evade legal requirements.",
+      "Do not use the Website Growth Check on an address you are not allowed to look at, or present its findings as a full audit.",
       "Do not use workflows or professional services for unlawful surveillance, exploitation or discriminatory treatment.",
     ]),
     section("3. Data and workspace boundaries", [
@@ -307,7 +312,7 @@ export const copyrightPage: PolicyPage = {
     section("2. Uploads and outputs", [
       "Upload or connect only materials you own or are authorised to use.",
       "The limited processing licence in the Terms exists to deliver the requested service. It does not permit us or other users to publish confidential materials.",
-      "AI-generated or template-based outputs may include elements subject to third-party rights, and exclusive copyright protection is not guaranteed.",
+      "Template-based outputs, including certificates, and short website findings may include elements subject to third-party rights, and exclusive copyright protection is not guaranteed. Website findings describe a public page. They are not a licence to copy that website.",
       "Materials provided for a professional-service engagement must also be lawfully available for the agreed work.",
     ]),
     section("3. Reporting infringement", [
@@ -329,7 +334,7 @@ export const copyrightPage: PolicyPage = {
 
 export const safetyPage: PolicyPage = {
   title: "Legal and Safety",
-  description: "Safe automation, privacy requests, access to information and security reporting.",
+  description: "Website checks, professional work, privacy requests, access to information and security reporting.",
   sections: [
     section("1. Legal information", [
       "Legal operator: AUTOMATIONFLOWLAB (PTY) LTD.",
@@ -337,7 +342,7 @@ export const safetyPage: PolicyPage = {
       "Country: South Africa.",
       "Website: https://automationflowlab.com.",
       "Contact: Automationflowlab.info@proton.me.",
-      "AutomationFlowLab provides professional business and technology services alongside self-service app tools.",
+      "AutomationFlowLab provides a free Website Growth Check and other self-service tools, alongside separately quoted professional services.",
       "These details identify the company operating the website, app and services.",
       "No statement of tax registration, VAT registration, regulatory accreditation, security certification or vendor partnership is made unless separately verified and published.",
     ]),
@@ -349,13 +354,14 @@ export const safetyPage: PolicyPage = {
       "Separately agreed professional work is governed by its accepted scope, fees, payment arrangements, client responsibilities, deliverables and support terms.",
       "Professional-service pricing and quotation requests are separate from future app subscriptions.",
     ]),
-    section("3. Automation and AI safety", [
+    section("3. Checks and automated output", [
       "Keep source records and independent backups.",
-      "Test workflows with non-sensitive sample data before production use. Check permissions, recipient lists, calculations and outputs.",
+      "The Website Growth Check is an initial read of a public page. It is not a guarantee of rankings, traffic or revenue, and it is not a repair guide.",
+      "Test agreed workflows with non-sensitive sample data before production use. Check permissions, recipient lists, calculations and outputs.",
       "Use approval steps for consequential changes, outbound communications and destructive actions.",
-      "Stop a workflow and disconnect affected integrations if it behaves unexpectedly.",
-      "AI output may be incomplete, inaccurate or biased. Review outputs against source evidence and obtain appropriate professional advice when necessary.",
-      "Do not use unsupported tools for medical, legal, credit, employment or other consequential automated determinations.",
+      "Stop a workflow and disconnect affected access if it behaves unexpectedly.",
+      "Automated output may be incomplete or inaccurate. Review it against the source and obtain appropriate professional advice when necessary.",
+      "Do not use the tools for medical, legal, credit, employment or other consequential automated determinations.",
       "Professional-service engagements should define the appropriate testing, review and authorisation arrangements for the agreed work.",
     ]),
     section("4. Confidentiality and integrations", [
@@ -421,7 +427,7 @@ export const contactPolicy: PolicyPage = {
     section("4. Complaints and service proposals", [
       "For a complaint, explain what happened and the outcome you seek.",
       "For professional work, describe your process, intended result and relevant systems.",
-      "Our services include business automation, AI automation, web application development and support, Excel troubleshooting, analytics, Zoho configuration and SharePoint design, as offered and agreed for each engagement.",
+      "Our professional services may include a Website Revenue & Growth Audit, website improvement, search growth, conversion work, monitoring, workflow automation, systems integration, Microsoft 365, SharePoint, Excel, Zoho, analytics, reporting and portals, as offered and agreed for each engagement.",
       "An enquiry, booking request or proposal request creates no payment obligation.",
       "Professional work requires an accepted written proposal or service agreement specifying scope, fees, payment arrangements and responsibilities.",
       "Free self-service app access does not include separately quoted professional services.",
@@ -453,7 +459,7 @@ export const legalCards = [
   {
     to: "/legal-safety" as const,
     title: "Legal and Safety",
-    text: "Safe automation, privacy requests, access to information and security reporting.",
+    text: "Website checks, professional work, privacy requests, access to information and security reporting.",
   },
   { to: "/contact" as const, title: "Contact", text: "Support, service enquiries, complaints, privacy, copyright and security enquiries." },
 ];

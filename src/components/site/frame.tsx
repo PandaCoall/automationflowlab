@@ -3,12 +3,57 @@ import { ArrowLeft, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { UserButton } from "@/lib/auth/gates";
 import { legal } from "@/lib/legal";
-import { nav, site } from "@/lib/site-content";
+import { site } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
 import { Mark } from "@/components/site/mark";
 
 function isActive(pathname: string, to: string) {
   return pathname === to || pathname.startsWith(`${to}/`);
+}
+
+const itemClass = "rounded-sm px-3 py-2 text-sm font-semibold";
+
+function NavLinks({ pathname, stacked = false }: { pathname: string; stacked?: boolean }) {
+  const item = stacked ? "flex h-12 items-center rounded-sm px-2 text-base font-semibold" : itemClass;
+  const idle = stacked ? "text-ink" : "text-muted hover:text-ink";
+  return (
+    <>
+      <Link to="/tools/growth-check" aria-current={isActive(pathname, "/tools/growth-check") ? "page" : undefined} className={cn(item, isActive(pathname, "/tools/growth-check") ? "bg-surface text-ink" : idle)}>
+        Website Growth Check
+      </Link>
+      <Link to="/audit" aria-current={isActive(pathname, "/audit") ? "page" : undefined} className={cn(item, isActive(pathname, "/audit") ? "bg-surface text-ink" : idle)}>
+        Full Audit
+      </Link>
+      <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} className={cn(item, pathname === "/services" ? "bg-surface text-ink" : idle)}>
+        Services
+      </Link>
+      <Link to="/about" aria-current={isActive(pathname, "/about") ? "page" : undefined} className={cn(item, isActive(pathname, "/about") ? "bg-surface text-ink" : idle)}>
+        About
+      </Link>
+      <Link to="/contact" search={{ topic: "" }} aria-current={isActive(pathname, "/contact") ? "page" : undefined} className={cn(item, isActive(pathname, "/contact") ? "bg-surface text-ink" : idle)}>
+        Contact
+      </Link>
+    </>
+  );
+}
+
+function CheckWebsite({ pathname, block = false }: { pathname: string; block?: boolean }) {
+  const className = cn(
+    "inline-flex h-12 items-center justify-center rounded-sm bg-primary px-4 text-sm font-semibold text-primary-fg",
+    block && "w-full",
+  );
+  if (pathname === "/") {
+    return (
+      <a href="#check" className={className}>
+        Check my website
+      </a>
+    );
+  }
+  return (
+    <Link to="/tools/growth-check" className={className}>
+      Check my website
+    </Link>
+  );
 }
 
 export function SiteFrame({ children }: { children: React.ReactNode }) {
@@ -63,27 +108,16 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
             <span className="truncate">{site.name}</span>
           </Link>
           </div>
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-            {nav.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                aria-current={isActive(pathname, item.to) ? "page" : undefined}
-                className={cn(
-                  "rounded-sm px-3 py-2 text-sm font-semibold",
-                  isActive(pathname, item.to) ? "bg-surface text-ink" : "text-muted hover:text-ink",
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary">
+            <NavLinks pathname={pathname} />
           </nav>
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-2 xl:flex">
+            <CheckWebsite pathname={pathname} />
             <UserButton />
           </div>
           <button
             type="button"
-            className="grid size-11 place-items-center rounded-sm border border-line bg-surface lg:hidden"
+            className="grid size-11 place-items-center rounded-sm border border-line bg-surface xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}
@@ -94,7 +128,7 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
         </div>
       </header>
       {open ? (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50 xl:hidden">
           <button type="button" className="absolute inset-0 bg-ink/40" aria-label="Close menu" onClick={() => setOpen(false)} />
           <nav
             id="mobile-nav"
@@ -112,22 +146,12 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
                 <span className="sr-only">Close menu</span>
               </button>
             </div>
-            <ul className="flex-1 overflow-y-auto px-3 py-3">
-              {nav.map((item) => (
-                <li key={item.to}>
-                  <Link
-                    to={item.to}
-                    aria-current={isActive(pathname, item.to) ? "page" : undefined}
-                    className={cn(
-                      "flex h-12 items-center rounded-sm px-2 text-base font-semibold",
-                      isActive(pathname, item.to) ? "bg-surface text-ink" : "text-ink",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-1 flex-col overflow-y-auto px-3 py-3">
+              <div className="px-2 pb-3">
+                <CheckWebsite pathname={pathname} block />
+              </div>
+              <NavLinks pathname={pathname} stacked />
+            </div>
             <div className="border-t border-line px-5 py-3">
               <UserButton />
             </div>
@@ -138,46 +162,69 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <footer className="border-t border-line">
-        <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-12 md:grid-cols-4">
-          <div className="md:col-span-2">
+        <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-12 md:grid-cols-3">
+          <div>
             <p className="font-display text-xl">{site.name}</p>
+            <p className="mt-2 max-w-sm text-sm text-muted">{site.supporting}</p>
             <p className="mt-2 max-w-sm text-sm text-muted">{site.positioning}</p>
             <p className="mt-4 text-sm">
               <a className="font-semibold underline decoration-line underline-offset-4" href={`mailto:${site.email}`}>
                 {site.email}
               </a>
             </p>
-            <p className="mt-1 font-mono text-xs text-muted">{site.domain}</p>
           </div>
           <div>
-            <p className="text-sm font-semibold">Pages</p>
+            <p className="text-sm font-semibold">Automation Flow Lab</p>
             <ul className="mt-3 space-y-2 text-sm">
-              {nav.map((item) => (
-                <li key={item.to}>
-                  <Link to={item.to} className="text-muted hover:text-ink">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link to="/tools/growth-check" className="text-muted hover:text-ink">
+                  Website Growth Check
+                </Link>
+              </li>
+              <li>
+                <Link to="/audit" className="text-muted hover:text-ink">
+                  Full Website Audit
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-muted hover:text-ink">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-muted hover:text-ink">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" search={{ topic: "" }} className="text-muted hover:text-ink">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold">More</p>
+            <p className="text-sm font-semibold">Resources</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <Link to="/admin" className="text-muted hover:text-ink">
-                  Submission inbox
+                <Link to="/tools" className="text-muted hover:text-ink">
+                  Tools
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="text-muted hover:text-ink">
+                  Pricing
                 </Link>
               </li>
             </ul>
           </div>
         </div>
         <nav className="mx-auto flex w-full max-w-6xl flex-wrap gap-x-4 gap-y-2 px-5 pb-4 text-sm" aria-label="Legal">
-          <Link to="/terms" className="font-semibold text-muted hover:text-ink">
-            Terms
-          </Link>
           <Link to="/privacy" className="font-semibold text-muted hover:text-ink">
             Privacy
+          </Link>
+          <Link to="/terms" className="font-semibold text-muted hover:text-ink">
+            Terms
           </Link>
           <Link to="/cookies" className="font-semibold text-muted hover:text-ink">
             Cookies
@@ -191,8 +238,11 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
           <Link to="/legal-safety" className="font-semibold text-muted hover:text-ink">
             Legal & Safety
           </Link>
-          <Link to="/contact" search={{ topic: "" }} className="font-semibold text-muted hover:text-ink">
-            Contact
+          <Link to="/legal" className="font-semibold text-muted hover:text-ink">
+            Legal
+          </Link>
+          <Link to="/admin" className="font-semibold text-muted hover:text-ink">
+            Staff inbox
           </Link>
         </nav>
         <p className="mx-auto w-full max-w-6xl px-5 pb-2 text-xs text-muted">

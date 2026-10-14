@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AuditRouteImport } from './routes/audit'
 import { Route as CommunityStandardsRouteImport } from './routes/community-standards'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -50,6 +51,11 @@ const AboutRoute = AboutRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommunityStandardsRoute = CommunityStandardsRouteImport.update({
@@ -177,6 +183,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/audit': typeof AuditRoute
   '/community-standards': typeof CommunityStandardsRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/audit': typeof AuditRoute
   '/community-standards': typeof CommunityStandardsRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
@@ -236,6 +244,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/audit': typeof AuditRoute
   '/community-standards': typeof CommunityStandardsRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
@@ -267,6 +276,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/audit'
     | '/community-standards'
     | '/contact'
     | '/cookies'
@@ -296,6 +306,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/audit'
     | '/community-standards'
     | '/contact'
     | '/cookies'
@@ -325,6 +336,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/audit'
     | '/community-standards'
     | '/contact'
     | '/cookies'
@@ -355,6 +367,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  AuditRoute: typeof AuditRoute
   CommunityStandardsRoute: typeof CommunityStandardsRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
@@ -402,6 +415,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/community-standards': {
@@ -579,6 +599,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  AuditRoute: AuditRoute,
   CommunityStandardsRoute: CommunityStandardsRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,

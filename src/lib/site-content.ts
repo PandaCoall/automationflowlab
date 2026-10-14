@@ -4,20 +4,9 @@ export const site = {
   name: "Automation Flow Lab",
   domain: contentSettings.domain,
   email: contentSettings.contactEmail,
-  positioning: "Business tools that do the repetitive work for you.",
-  supporting:
-    "We build practical webapps, AI-powered workflows, and connected business systems, then support them after launch. From Excel problems to Zoho and SharePoint configuration, we make your processes easier to run.",
+  positioning: "We find what's stopping your business from growing online, then build the systems to fix it.",
+  supporting: "Find it. Fix it. Grow it.",
 } as const;
-
-export const nav = [
-  { to: "/tools", label: "Tools" },
-  { to: "/services", label: "Services" },
-  { to: "/pricing", label: "Pricing" },
-  { to: "/custom-builds", label: "Custom Builds" },
-  { to: "/support-plans", label: "Support Plans" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
-] as const;
 
 export type ToolStatus = "coming-soon" | "available" | "demo";
 
@@ -40,7 +29,7 @@ export const tools: Tool[] = [
     slug: "certflow",
     name: "Certflow",
     status: "available",
-    summary: "Turn a learner spreadsheet into one certificate PDF per person, then run the send queue without stopping the whole batch.",
+    summary: "Training teams that need to generate and send certificates efficiently.",
     audience: "Training teams who still build hundreds of certificates by hand or through a flow that dies halfway.",
     outcome: "Upload the list, check the certificate with the logo, download the PDFs, and retry only the rows that did not send.",
     features: [
@@ -51,39 +40,24 @@ export const tools: Tool[] = [
     ],
   },
   {
-    slug: "automation-watch",
-    name: "Automation Watch",
-    status: "demo",
-    summary: "Sample flows, each with the error the run returned and a plain explanation of why it stopped.",
-    audience: "Someone new to flows who can see an error code and still not tell what to look at.",
-    outcome: "You can read a failed step in ordinary language. This page does not connect to a live flow.",
-    features: [
-      "A set of sample flow links, already attached",
-      "The error as the platform wrote it",
-      "What that error means, and why it usually happens",
-      "You cannot paste your own link. A live read of your flows is separate work",
-    ],
-  },
-  {
     slug: "growth-check",
     name: "Website Growth Check",
     status: "available",
-    summary: "Website check → paid audit → fix → grow → monitor.",
-    audience: "A business that wants a clear read of the website, then a path from that check to the paid work.",
-    outcome: "Website Growth Check is the site intelligence system. The check is the start. The paid audit, the fix, the growth work, and monitoring are booked separately.",
+    summary: "Find the most important problems affecting a website's visibility, trust, conversion and growth.",
+    audience: "A business owner who wants a clear first read of the website before a paid audit.",
+    outcome: "Up to five findings, ordered by commercial importance, and a path to the full Website Revenue & Growth Audit.",
     features: [
-      "Website check — the first read of the public site",
-      "Paid audit — a deeper look, quoted separately",
-      "Fix — the repairs agreed after the audit",
-      "Grow — the changes that support enquiries",
-      "Monitor — a later look at the site after the work",
+      "A check of the public page, with no account",
+      "Up to five findings: status, area, and why it may matter",
+      "Not a full audit, and not a repair guide",
+      "The paid audit, the fix, the growth work, and monitoring are booked separately",
     ],
   },
   {
     slug: "license-compare",
     name: "Microsoft licence comparison",
     status: "available",
-    summary: "Put two Microsoft 365 suites side by side using the public commercial price list.",
+    summary: "Compare Microsoft 365 options based on business requirements and budget.",
     audience: "Anyone choosing a Microsoft suite on budget, what it has to cover, and where it is bought.",
     outcome: "A plain answer on which of the two fits better, and why, from the prices Microsoft publishes.",
     features: [
@@ -94,41 +68,10 @@ export const tools: Tool[] = [
     ],
   },
   {
-    slug: "excel-health-check",
-    name: "Excel Health Check",
-    status: "demo",
-    summary:
-      "A written review of a workbook: what is wrong, what is fragile, and what to fix first.",
-    audience:
-      "Anyone whose spreadsheet is the system — slow, wrong, or understood by only one person.",
-    outcome:
-      "A repair order you can act on — not a dashboard bolted onto a workbook that is already untrustworthy.",
-    features: [
-      "A review of structure, formulas, and where the numbers come from",
-      "Notes on broken links, hidden sheets, and reports that depend on one person’s layout",
-      "A split between figures that are wrong and a file that is merely hard to maintain",
-      "A short repair plan. Hands-on fixes are booked separately as Excel work, not inside this page",
-    ],
-  },
-  {
-    slug: "form-to-inbox-check",
-    name: "Form-to-Inbox Check",
-    status: "demo",
-    summary: "Confirm that a website form still lands in the mailbox or system it is supposed to hit.",
-    audience: "The person who finds out a contact form died only when a customer says they never heard back.",
-    outcome: "You know the form posts, and where the message goes, before the next enquiry disappears.",
-    features: [
-      "A named form and the destination it should reach",
-      "A record of the last successful delivery you checked",
-      "A clear failed state when the destination does not receive it",
-      "No claim that we connect to a mailbox we have not configured",
-    ],
-  },
-  {
     slug: "zoho-fit",
     name: "Zoho setup check",
     status: "available",
-    summary: "Tick what you need. See the Zoho apps that cover it, and which extras are wasted effort.",
+    summary: "Identify which Zoho applications may suit a business and where unnecessary subscriptions may exist.",
     audience: "Anyone about to buy Zoho, or already paying for apps they do not open.",
     outcome: "The smallest set for the work you named, and the few setup steps that mean it is actually done.",
     features: [
@@ -138,37 +81,15 @@ export const tools: Tool[] = [
       "It does not sign into Zoho and it is not a quote",
     ],
   },
-  {
-    slug: "sharepoint-library-builder",
-    name: "SharePoint library",
-    status: "demo",
-    summary: "Move a file between Incoming, Current, and Filed, and watch the status follow it.",
-    audience:
-      "Teams whose files sit in personal drives and email, and who want to see a library before anyone builds one.",
-    outcome: "You can see where a file lives, and which copy is the current one, without opening SharePoint.",
-    features: [
-      "Drag a file into Incoming, Current, or Filed",
-      "The status changes with the move, so the current copy is obvious",
-      "Nothing is uploaded and no SharePoint site is created",
-      "Building the real library is the SharePoint service",
-    ],
-  },
-  {
-    slug: "change-request",
-    name: "Change Request",
-    status: "demo",
-    summary: "One place for a technical ask: access, a publish, or a change — and the decision that followed.",
-    audience:
-      "The person who gets “I can’t open the library” or “please publish this” by email, then cannot find what was approved.",
-    outcome: "The request has a status, a named owner, and a recorded yes, no, or send-back.",
-    features: [
-      "A form for access, publish, or a system change — not leave or expenses",
-      "A queue of items waiting on a technical decision",
-      "Who decided, and a short reason",
-      "A status the requester can check without another chase",
-    ],
-  },
 ];
+
+export const retiredToolSlugs = [
+  "automation-watch",
+  "excel-health-check",
+  "form-to-inbox-check",
+  "sharepoint-library-builder",
+  "change-request",
+] as const;
 
 tools.sort((a, b) => Number(a.status !== "available") - Number(b.status !== "available"));
 
@@ -176,94 +97,175 @@ export function getTool(slug: string): Tool | undefined {
   return tools.find((tool) => tool.slug === slug);
 }
 
-export type Service = {
+export type ServiceItem = {
   slug: string;
   name: string;
-  problem: string;
-  deliverables: string[];
+  summary: string;
   enquiryTopic: string;
+  href?: "/audit";
 };
 
-export const services: Service[] = [
+export type ServiceGroup = {
+  id: string;
+  name: string;
+  items: ServiceItem[];
+};
+
+export const serviceGroups: ServiceGroup[] = [
   {
-    slug: "ai-workflow-automation",
-    name: "AI and workflow automation",
-    problem:
-      "The same details get copied between email, spreadsheets, and chat, and the next step waits on someone remembering it.",
-    deliverables: [
-      "A written map of the process as it actually runs",
-      "An automated workflow for the repetitive steps",
-      "A handover note on what runs on its own and what still needs a person",
-      "Optional support after it is in use",
+    id: "website",
+    name: "Website and growth",
+    items: [
+      {
+        slug: "website-audit",
+        name: "Website Revenue & Growth Audit",
+        summary: "A deeper look at what is holding the website back, and where the stronger opportunities are.",
+        enquiryTopic: "Website Revenue & Growth Audit",
+        href: "/audit",
+      },
+      {
+        slug: "website-improvement",
+        name: "Website improvement",
+        summary: "Clearer pages, fewer points of confusion, and a site that is easier to use.",
+        enquiryTopic: "Website improvement",
+      },
+      {
+        slug: "search-growth",
+        name: "SEO and search growth",
+        summary: "Improve visibility and the ability to compete for searches that can bring customers.",
+        enquiryTopic: "SEO and search growth",
+      },
+      {
+        slug: "conversion",
+        name: "Conversion improvement",
+        summary: "Make it easier for a visitor who is already interested to enquire, book, or buy.",
+        enquiryTopic: "Conversion improvement",
+      },
+      {
+        slug: "international-search",
+        name: "International search expansion",
+        summary: "Prepare the website to be understood in more than one market.",
+        enquiryTopic: "International search expansion",
+      },
+      {
+        slug: "website-monitoring",
+        name: "Website monitoring",
+        summary: "Watch for issues and new opportunities after the work is live.",
+        enquiryTopic: "Website monitoring",
+      },
     ],
-    enquiryTopic: "AI and workflow automation",
   },
   {
-    slug: "custom-webapps",
-    name: "Custom webapp design, development, and ongoing support",
-    problem:
-      "A spreadsheet or a chain of emails is doing a job that needs a proper screen, a clear status, and more than one person using it.",
-    deliverables: [
-      "A scoped webapp for that job",
-      "The design and the build",
-      "A handover so your team can run it",
-      "Ongoing support after launch, if you want it",
+    id: "automation",
+    name: "Automation and operations",
+    items: [
+      {
+        slug: "ai-workflow-automation",
+        name: "Workflow automation",
+        summary: "Replace repetitive manual work with a workflow the team can rely on.",
+        enquiryTopic: "Workflow automation",
+      },
+      {
+        slug: "automation-troubleshooting",
+        name: "Automation troubleshooting",
+        summary: "Find why a workflow stopped and put the hand-off back in order.",
+        enquiryTopic: "Automation troubleshooting",
+      },
+      {
+        slug: "systems-integration",
+        name: "Systems integration",
+        summary: "Connect the systems that should already be passing work to each other.",
+        enquiryTopic: "Systems integration",
+      },
+      {
+        slug: "integration-config",
+        name: "Integration and Config",
+        summary: "Configure the tools a business already uses and connect them so work is not left half-finished.",
+        enquiryTopic: "Integration and Config",
+      },
+      {
+        slug: "request-approval",
+        name: "Request and approval systems",
+        summary: "Give requests a status, an owner, and a recorded decision.",
+        enquiryTopic: "Request and approval systems",
+      },
+      {
+        slug: "custom-webapps",
+        name: "Custom systems",
+        summary: "When a spreadsheet or an email chain needs a proper screen and a clear status.",
+        enquiryTopic: "Custom webapp",
+      },
     ],
-    enquiryTopic: "Custom webapp",
   },
   {
-    slug: "excel",
-    name: "Excel troubleshooting and reporting repair",
-    problem:
-      "A workbook is slow, shows the wrong number, or only one person knows how it works.",
-    deliverables: [
-      "A diagnosis of what is broken",
-      "Repairs to formulas and to the way the report is laid out",
-      "Notes so someone else can maintain the file",
-      "This is hands-on work on your workbook, not a self-serve checker on this website",
+    id: "systems",
+    name: "Business systems",
+    items: [
+      {
+        slug: "microsoft-365",
+        name: "Microsoft 365",
+        summary: "Help a business use the Microsoft 365 tools it already pays for, together.",
+        enquiryTopic: "Microsoft 365",
+      },
+      {
+        slug: "sharepoint",
+        name: "SharePoint Design and Integration",
+        summary: "Design a SharePoint environment and connect it to the way the team already works.",
+        enquiryTopic: "SharePoint Design and Integration",
+      },
+      {
+        slug: "client-portal",
+        name: "Client Operation Portals",
+        summary: "Bring client information, processes and workflows into organised portals.",
+        enquiryTopic: "Client Operation Portals",
+      },
+      {
+        slug: "excel",
+        name: "Excel automation",
+        summary: "Repair a fragile workbook and reduce the manual work around it.",
+        enquiryTopic: "Excel troubleshooting",
+      },
+      {
+        slug: "zoho",
+        name: "Zoho setup and optimisation",
+        summary: "Choose, configure, and simplify the Zoho apps the business actually needs.",
+        enquiryTopic: "Zoho configuration",
+      },
     ],
-    enquiryTopic: "Excel troubleshooting",
   },
   {
-    slug: "analytics",
-    name: "Website analytics setup and troubleshooting",
-    problem:
-      "You cannot tell whether the site is being measured, or the numbers you see do not match what you expect.",
-    deliverables: [
-      "A working analytics setup, or a repair of the one you have",
-      "A check that the site is actually sending data",
-      "A plain-language note on what those numbers mean",
-      "Where the site already uses Google Analytics, we set that up or fix it. We do not promise a particular vendor feature we have not confirmed on your account",
+    id: "insight",
+    name: "Data and insight",
+    items: [
+      {
+        slug: "analytics",
+        name: "Analytics",
+        summary: "Set up or repair measurement so the website’s numbers can be trusted.",
+        enquiryTopic: "Website analytics",
+      },
+      {
+        slug: "reporting",
+        name: "Reporting",
+        summary: "Turn the numbers you already have into a report someone can act on.",
+        enquiryTopic: "Reporting",
+      },
+      {
+        slug: "dashboards",
+        name: "Business dashboards",
+        summary: "Put the few figures that matter where the people who decide can see them.",
+        enquiryTopic: "Business dashboards",
+      },
+      {
+        slug: "performance-monitoring",
+        name: "Performance monitoring",
+        summary: "Notice when a workflow, a form, or a report stops doing its job.",
+        enquiryTopic: "Performance monitoring",
+      },
     ],
-    enquiryTopic: "Website analytics",
-  },
-  {
-    slug: "zoho",
-    name: "Zoho configuration and integrations",
-    problem:
-      "Zoho is in place, but the modules, fields, or hand-offs do not match how the business actually works.",
-    deliverables: [
-      "Configuration of the Zoho apps you already use",
-      "A short written record of how it is set up",
-      "Connections between those Zoho apps where Zoho itself supports them",
-      "We will not promise a third-party connector until we have confirmed it for your account",
-    ],
-    enquiryTopic: "Zoho configuration",
-  },
-  {
-    slug: "sharepoint",
-    name: "SharePoint workspace and document-library design",
-    problem:
-      "Files live in personal drives and email threads, so people cannot find the current version.",
-    deliverables: [
-      "A SharePoint workspace structure for the team that will use it",
-      "Document libraries with a sensible set of folders or columns",
-      "A short guide for the people who will work in it",
-      "Permissions agreed with you — not an organisation-wide rollout you have not asked for",
-    ],
-    enquiryTopic: "SharePoint design",
   },
 ];
+
+export const services: ServiceItem[] = serviceGroups.flatMap((group) => group.items);
 
 export const buildSteps = [
   {

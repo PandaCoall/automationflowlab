@@ -5,8 +5,8 @@ const services = [
   ["Excel problem diagnosis", "From R2,000"],
   ["Excel workbook or reporting repair", "From R3,000"],
   ["Website analytics setup or repair", "From R5,000"],
-  ["AI and workflow automation assessment", "From R4,000"],
-  ["AI and workflow automation build", "From R12,500"],
+  ["Workflow automation assessment", "From R4,000"],
+  ["Workflow automation build", "From R12,500"],
   ["Zoho configuration and integrations", "From R15,000"],
   ["SharePoint workspace and library design", "From R15,000"],
   ["Custom webapp scoping", "From R7,500"],
@@ -76,7 +76,7 @@ function PricingPage() {
       <PageIntro
         eyebrow="Pricing"
         title="Clear starting prices for practical business systems."
-        lede="Tell us what you need, and we’ll confirm the final scope and price before work begins."
+        lede="Tell us what you need, and we’ll confirm the final scope and price before work begins. Website growth work is quoted from the audit. Other starting prices are below."
       />
       <div className="mx-auto w-full max-w-6xl space-y-4 px-5">
         <p className="max-w-3xl text-sm text-muted">

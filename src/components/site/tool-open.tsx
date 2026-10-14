@@ -29,9 +29,5 @@ export function ToolOpen({ slug, label, className }: { slug: string; label: stri
       </Link>
     );
   }
-  return (
-    <Link to="/tools/play/$slug" params={{ slug }} className={className}>
-      {label}
-    </Link>
-  );
+  return null;
 }
