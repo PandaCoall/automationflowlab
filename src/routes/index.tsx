@@ -2,7 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { FindingCard, WebsiteCheck } from "@/components/site/website-check";
 import { track } from "@/lib/analytics";
 import type { Finding } from "@/lib/growth/scan";
-import { site } from "@/lib/site-content";
+import { site, serviceGroups } from "@/lib/site-content";
 
 const looks = [
   { name: "Visibility", text: "Can potential customers actually find you?" },
@@ -75,19 +75,56 @@ const organization = {
   "@type": "ProfessionalService",
   name: "Automation Flow Lab",
   url: "https://automationflowlab.com/",
+  logo: "https://automationflowlab.com/logo.png",
+  image: "https://automationflowlab.com/icon-192.png",
   email: "Automationflowlab.info@proton.me",
   areaServed: "South Africa",
-  description: "We find what's stopping a website from being found, trusted and turning visitors into customers, then help fix it.",
+  description: site.description,
+  knowsAbout: [
+    "Website Growth Check",
+    "Website audit",
+    "Search growth",
+    "Workflow automation",
+    "SharePoint design and integration",
+    "Client operation portals",
+    "Microsoft 365",
+    "Excel",
+    "Zoho",
+    "Analytics and reporting",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Automation Flow Lab services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Website Growth Check",
+          description: "An initial check of what is stopping a website from being found, trusted and turning visitors into customers.",
+        },
+      },
+      ...serviceGroups.flatMap((group) =>
+        group.items.map((item) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: item.name,
+            description: item.summary,
+          },
+        })),
+      ),
+    ],
+  },
 };
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Website Growth Check — Automation Flow Lab" },
+      { title: "Website Growth Check and Business Systems — Automation Flow Lab" },
       {
         name: "description",
-        content:
-          "Find out what's stopping your website from being found, trusted and turning visitors into customers. Start with a Website Growth Check.",
+        content: site.description,
       },
       { name: "robots", content: "index,follow" },
     ],
@@ -107,6 +144,9 @@ function Home() {
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-muted">
           Find out what's stopping your website from being found, trusted and turning visitors into customers.
+        </p>
+        <p className="mt-3 max-w-2xl text-muted">
+          The Website Growth Check is the main service. Automation Flow Lab also provides a full website audit, website improvement, search growth, conversion work and monitoring, plus workflow automation, integration and configuration, SharePoint design and integration, client operation portals, Microsoft 365, Excel, Zoho, analytics and reporting.
         </p>
         <div className="mt-8 max-w-3xl">
           <WebsiteCheck source="homepage" id="check" />

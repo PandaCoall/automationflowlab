@@ -9,8 +9,7 @@ export const Route = createFileRoute("/about")({
       { title: "About — Automation Flow Lab" },
       {
         name: "description",
-        content:
-          "Automation Flow Lab finds what's stopping a business from growing online, then builds the website and systems work to fix it.",
+        content: site.description,
       },
     ],
     links: [{ rel: "canonical", href: "https://automationflowlab.com/about" }],

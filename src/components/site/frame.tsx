@@ -5,7 +5,6 @@ import { UserButton } from "@/lib/auth/gates";
 import { legal } from "@/lib/legal";
 import { site } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
-import { Mark } from "@/components/site/mark";
 
 function isActive(pathname: string, to: string) {
   return pathname === to || pathname.startsWith(`${to}/`);
@@ -91,7 +90,7 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <header className="sticky top-0 z-40 border-b border-line bg-paper">
-        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-5">
+        <div className="mx-auto flex min-h-20 w-full max-w-6xl items-center justify-between gap-3 px-5 py-2">
           <div className="flex min-w-0 items-center gap-2">
             {pathname !== "/" ? (
               <button
@@ -103,10 +102,9 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
                 <span className="sr-only">Back</span>
               </button>
             ) : null}
-            <Link to="/" className="flex min-w-0 items-center gap-2 font-display text-lg text-ink">
-            <Mark className="size-8 text-primary" />
-            <span className="truncate">{site.name}</span>
-          </Link>
+            <Link to="/" className="flex min-w-0 items-center">
+              <img src="/logo.png" alt="Automation Flow Lab" className="h-auto w-40 sm:w-52" />
+            </Link>
           </div>
           <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary">
             <NavLinks pathname={pathname} />
@@ -164,7 +162,7 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
       <footer className="border-t border-line">
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-12 md:grid-cols-3">
           <div>
-            <p className="font-display text-xl">{site.name}</p>
+            <img src="/logo.png" alt="Automation Flow Lab" className="h-auto w-52" />
             <p className="mt-2 max-w-sm text-sm text-muted">{site.supporting}</p>
             <p className="mt-2 max-w-sm text-sm text-muted">{site.positioning}</p>
             <p className="mt-4 text-sm">

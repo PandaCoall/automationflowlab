@@ -6,6 +6,8 @@ export const site = {
   email: contentSettings.contactEmail,
   positioning: "We find what's stopping your business from growing online, then build the systems to fix it.",
   supporting: "Find it. Fix it. Grow it.",
+  description:
+    "Website Growth Check: be found, trusted and chosen. Also website audits, search growth, automation, SharePoint, client portals, Microsoft 365, Excel, Zoho and reporting.",
 } as const;
 
 export type ToolStatus = "coming-soon" | "available" | "demo";

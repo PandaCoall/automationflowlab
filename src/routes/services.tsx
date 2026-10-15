@@ -7,11 +7,11 @@ import { serviceGroups } from "@/lib/site-content";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Automation Flow Lab" },
+      { title: "Website Audit, Automation and Business Systems — Automation Flow Lab" },
       {
         name: "description",
         content:
-          "Website growth, workflow automation, Microsoft 365, SharePoint, Excel, Zoho, analytics and reporting. Concise services from Automation Flow Lab.",
+          "Core service: Website Growth Check. Also a website audit, search growth, workflow automation, integration, SharePoint design, client operation portals, Microsoft 365, Excel, Zoho and reporting.",
       },
     ],
     links: [{ rel: "canonical", href: "https://automationflowlab.com/services" }],
@@ -29,7 +29,7 @@ function ServicesPage() {
       <PageIntro
         eyebrow="Services"
         title="Help organised around the result"
-        lede="Find the friction, fix it, and give the business a better chance to grow. The detail of a job is agreed in a scope, not published as a manual."
+        lede="The main service is the Website Growth Check. Around it: a full website audit, search growth, conversion and monitoring, then workflow automation, integration and configuration, SharePoint design and integration, client operation portals, Microsoft 365, Excel, Zoho, analytics and reporting."
       />
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5">
         {serviceGroups.map((group) => (

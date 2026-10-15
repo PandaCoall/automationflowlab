@@ -5,23 +5,24 @@ import { SiteFrame } from "@/components/site/frame";
 import { Link } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Automation Flow Lab";
+import { site } from "@/lib/site-content";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
+      { title: site.name },
       {
         name: "description",
-        content:
-          "Automation Flow Lab finds what's stopping a website from being found, trusted and turning visitors into customers.",
+        content: site.description,
       },
-      { name: "theme-color", content: "#c4004f" },
+      { name: "theme-color", content: "#0b3a82" },
     ],
     links: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+      { rel: "icon", type: "image/png", href: "/icon-48.png", sizes: "48x48" },
+      { rel: "icon", type: "image/png", href: "/icon-192.png", sizes: "192x192" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -30,7 +31,7 @@ export const Route = createRootRoute({
       },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
-      { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
   }),
   component: RootComponent,
